@@ -10,12 +10,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <profiles>
-        <!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
         <profile>
             <id>ATT</id>
             <modules>
-                <module>att</module>
                 <module>common</module>
+                <module>att</module>
             </modules>
         </profile>
         <profile>
@@ -31,8 +30,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>att</module>
                 <module>common</module>
+                <module>att</module>
                 <module>selenium</module>
             </modules>
         </profile>
@@ -92,26 +91,6 @@
             <groupId>maven</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.7-20060614</version>
-        </dependency>
-        <dependency>
-            <groupId>ats</groupId>
-            <artifactId>ats-sportsbook-dtos</artifactId>
-            <version>205</version>
-        </dependency>
-        <dependency>
-            <groupId>ats</groupId>
-            <artifactId>ats-json</artifactId>
-            <version>9</version>
-        </dependency>
-        <dependency>
-            <groupId>ats</groupId>
-            <artifactId>ats-cms-dtos</artifactId>
-            <version>52</version>
-        </dependency>
-        <dependency>
-            <groupId>ats</groupId>
-            <artifactId>ats-betsync-dtos</artifactId>
-            <version>64</version>
         </dependency>
         <dependency>
             <groupId>ats</groupId>
