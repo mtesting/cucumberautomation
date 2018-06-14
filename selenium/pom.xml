@@ -16,6 +16,93 @@
         <selenium.version>3.11.0</selenium.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <executions>
+                    <execution>
+                        <id>acceptance-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <forkCount>${parallel.threads}</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>**/*IT.class</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.temyers</groupId>
+                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+                <version>4.2.0</version>
+                <executions>
+                    <execution>
+                        <id>generateRunners</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>generateRunners</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Mandatory -->
+                            <!-- comma separated list of package names to scan for glue code -->
+                            <glue>
+                                <package>amelco.testing.sportsbookauto.steps.common</package>
+                            </glue>
+                            <!-- These are optional, with the default values -->
+                            <!-- Where to output the generated tests -->
+                            <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
+                            <!-- The diectory, which must be in the root of the runtime classpath, containing your feature files.  -->
+                            <!-- <featuresDirectory>src/test/resources/features/</featuresDirectory> -->
+                            <featuresDirectory>src/test/resources/features/</featuresDirectory>
+                            <!-- Directory where the cucumber report files shall be written  -->
+                            <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
+                            <!-- CucumberOptions.strict property -->
+                            <strict>true</strict>
+                            <!-- CucumberOptions.monochrome property -->
+                            <monochrome>true</monochrome>
+                            <!-- Generate TestNG runners instead of JUnit ones. -->
+                            <useTestNG>false</useTestNG>
+                            <!-- The naming scheme to use for the generated test classes.  One of 'simple' or 'feature-title' -->
+                            <namingScheme>simple</namingScheme>
+                            <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
+                            <namingPattern>Parallel{c}IT</namingPattern>
+                            <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
+                            <parallelScheme>${parallel.scheme}</parallelScheme>
+                            <plugins>
+                                <plugin>
+                                    <!--The available options are junit, testng, html, pretty, json, usage and rerun -->
+                                    <name>json</name>
+                                    <!--Optional file extension. For build in cucumber plugins a sensible default is provided. -->
+                                    <extension>json</extension>
+                                    <!--Optional output directory. Overrides cucumberOutputDirectory. Usefull when different
+                                        plugins create files with the same extension-->
+                                    <outputDirectory>${project.build.directory}/cucumber-parallel/json</outputDirectory>
+                                </plugin>
+                                <!--<plugin>-->
+                                <!--<name>path.to.my.formaters.CustomHtmlFormatter</name>-->
+                                <!--&lt;!&ndash;Optional file extension. Unless the formatter writes to a file it is strongly-->
+                                <!--recommend that one is provided. &ndash;&gt;-->
+                                <!--<extension>html</extension>-->
+                                <!--&lt;!&ndash;Optional output directory. Overrides cucumberOutputDirectory. Useful when different-->
+                                <!--plugins create files with the same extension&ndash;&gt;-->
+                                <!--<outputDirectory>${project.build.directory}/cucumber-parallel/html</outputDirectory>-->
+                                <!--</plugin>-->
+                            </plugins>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -35,7 +122,7 @@
         <dependency>
             <groupId>amelco.testing</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
