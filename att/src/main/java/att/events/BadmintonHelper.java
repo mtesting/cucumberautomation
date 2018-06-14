@@ -43,8 +43,4 @@ public class BadmintonHelper extends EventHelper {
         sendIncidents(incidentsList);
     }
 
-    @Override
-    public void processLSportsIncidents(String incidentsFile) {
-
-    }
 }

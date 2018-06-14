@@ -16,9 +16,4 @@ public class TennisHelper extends EventHelper {
         sendIncidents(incidentsList);
     }
 
-    @Override
-    public void processLSportsIncidents(String incidentsFile) {
-
-    }
-
 }

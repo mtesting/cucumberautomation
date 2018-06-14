@@ -31,7 +31,7 @@ public class DataBaseHelper {
     private String user;
     private String password;
 
-    public DataBaseHelper() {
+    private DataBaseHelper() {
     }
 
     public DataBaseHelper(String url, String user, String password) {

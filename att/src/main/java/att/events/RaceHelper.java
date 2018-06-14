@@ -494,14 +494,4 @@ public class RaceHelper extends EventHelper {
 
     }
 
-    @Override
-    public void processIncidents(String incidentsFile, String sheetName) {
-
-    }
-
-    @Override
-    public void processLSportsIncidents(String incidentsFile) {
-
-    }
-
 }

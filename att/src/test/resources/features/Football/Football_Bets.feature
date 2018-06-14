@@ -4,7 +4,7 @@ Feature: Football Bets Placement
   Background:
     Given the User is logged onto the customer Sportsbook
 
-  @ps @bob
+  @ps
   @F-BrTxBets
   Scenario: Football single bet placement
     When "1" football event set as authorized, displayed and in-play
@@ -14,7 +14,17 @@ Feature: Football Bets Placement
       | betType   | SINGLE |
       | mktType   | MRES   |
       | winType   | WIN    |
-      | priceType | LIVE   |
+
+  @ps
+  @F-BrTxBets
+  Scenario: Football single bet placement
+    When "2" football event set as authorized, displayed and in-play
+      | Incidents | BETRADAR |
+      | Pricing   | TIPEX    |
+    Then user successfully place bets
+      | betType   | DOUBLE |
+      | mktType   | MRES   |
+      | winType   | WIN    |
 
   @Intralot
   @F-BrMirrorBetsSingle @F-BrMirrorBets
