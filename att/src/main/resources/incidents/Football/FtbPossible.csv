@@ -1,0 +1,9 @@
+00:00,0,0,first_half,true,10
+45:00,0,0,half_time,true,10
+45:00,0,0,second_half,true,10
+46:00,0,0,possible_penalty,true,10
+47:00,0,0,possible_red_card,true,10
+48:00,0-0,HOME,penalty_awarded,FALSE,10
+49:00,0,0,no_red_card_after_possible_red_card,true,10
+50:00,0,0,penalty_scored,true,10
+90:00,0,0,normal_time_end,true,10

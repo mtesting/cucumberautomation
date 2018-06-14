@@ -1,0 +1,7 @@
+120:00,0,0,awaiting_penalties,TRUE,10
+120:00,1-1,HOME,shootout_penalty_start,FALSE,10
+120:00,2-1,HOME,goal,FALSE,10
+120:00,2-1,AWAY,shootout_penalty_start,FALSE,10
+120:00,2-1,AWAY,shootout_penalty_miss,FALSE,10
+120:00,0,0,end_penalty_shootout,TRUE,10
+120:00,0,0,soccer_finished,TRUE,10
