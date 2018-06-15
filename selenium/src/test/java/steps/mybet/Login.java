@@ -1,23 +1,30 @@
 package steps.mybet;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import PageFactory.MyBetPageFactory;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import decoders.Decoder;
-import decoders.DecoderManager;
 import entities.Customer;
 import other.Constants;
-import other.SeleniumTestTemplate;
 
-public class Login extends SeleniumTestTemplate {
+public class Login {
 
+    private MyBetPageFactory myBetPageFactory;
     private Customer account;
+
+    protected static final Logger log = Logger.getLogger(Login.class);
 
     public Login(Customer account) {
         this.account = account;
+    }
+
+    @Given("^User is on the customer web$")
+    public void user_is_on_the_customer_web() throws Throwable {
+        myBetPageFactory = new MyBetPageFactory();
     }
 
     @Given("^a \"([^\"]*)\" user using \"([^\"]*)\"$")
@@ -30,65 +37,50 @@ public class Login extends SeleniumTestTemplate {
 
     @When("^User enters valid credentials$")
     public void user_enters_valid_credentials() throws Throwable {
-        driver.findElement(By.cssSelector("input[placeholder='Username']")).clear();
-        driver.findElement(By.cssSelector("input[placeholder='Username']")).sendKeys(account.getUsername());
-        driver.findElement(By.cssSelector("input[placeholder='Password']")).clear();
-        driver.findElement(By.cssSelector("input[placeholder='Password']")).sendKeys(Constants.MYBET_PASSWORD);
+        myBetPageFactory.setLoginUsername(account.getUsername());
+        myBetPageFactory.setLoginPassword(Constants.MYBET_PASSWORD);
     }
 
     @When("^User clicks on Login button$")
     public void user_clicks_on_Login_button() throws Throwable {
-        driver.findElement(By.cssSelector("[data-test-headernotloggedin-loginbtn]")).click();
+        myBetPageFactory.clickLoginButton();
     }
 
     @Then("^Message displayed Login Successfully$")
     public void message_displayed_Login_Successfully() throws Throwable {
-        if (!exists(By.id("deposit"))) {
-            driver.findElement(By.id("account"));
-        }
+        Assert.assertTrue("Login failed", myBetPageFactory.isUserLoggedIn());
     }
 
     @When("^User enters invalid credentials$")
     public void user_enters_invalid_credentials() throws Throwable {
-        if ("chromeMobile".equalsIgnoreCase(Constants.browserName)) {
+        /*if ("chromeMobile".equalsIgnoreCase(Constants.browserName)) {
             driver.findElement(By.cssSelector("div.field.tablet-show button")).click();
-        }
-        driver.findElement(By.cssSelector("input[placeholder='Username']")).clear();
-        driver.findElement(By.cssSelector("input[placeholder='Username']")).sendKeys("John");
-        driver.findElement(By.cssSelector("input[placeholder='Password']")).clear();
-        driver.findElement(By.cssSelector("input[placeholder='Password']")).sendKeys("Smith1234");
+        }*/
+        myBetPageFactory.setLoginUsername("John");
+        myBetPageFactory.setLoginPassword("Smith1234");
     }
 
     @Then("^Message displayed Invalid credentials entered$")
     public void message_displayed_Invalid_credentials_entered() throws Throwable {
-        if (!exists(By.xpath("//*[contains(text(), 'Username/password incorrect.')]"))) {
-            exists(By.className("icon-alert"));
-        }
+       myBetPageFactory.isIncorrectLoginMsgDisplayed();
     }
 
     @When("^User LogOut from the Application$")
     public void user_LogOut_from_the_Application() throws Throwable {
-        moveOver(By.className("outer-bal"));
-        if (exists(By.id("logoutBtn"))) {
-            driver.findElement(By.id("logoutBtn")).click();
-        } else {
-            javascriptClick(By.id("logoutBtn"));
-        }
+        myBetPageFactory.clickLogoutButton();
     }
 
     @Then("^Message displayed LogOut Successfully$")
     public void message_displayed_LogOut_Successfully() throws Throwable {
-        //waitFor(By.id("loginBtn"));
-        waitFor(By.cssSelector("div.field.tablet-hide button"));
+        Assert.assertFalse("Logout failed", myBetPageFactory.isUserLoggedIn());
     }
 
     @Given("^the User is logged onto the customer Sportsbook$")
     public void the_user_is_logged_onto_the_customer_sportsbook() throws Throwable {
-        Decoder decoder = DecoderManager.getManager().getDecoder();
-        driver = initDriver(decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST) + "/en/sports-betting/soccer");
+        //driver.get(driver.getCurrentUrl() + "/en/sports-betting/soccer");
         user_enters_valid_credentials();
         user_clicks_on_Login_button();
-        Assert.assertTrue("Login failed", exists(By.id("deposit")));
+        message_displayed_Login_Successfully();
     }
 
 }

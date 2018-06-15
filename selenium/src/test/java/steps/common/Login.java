@@ -14,9 +14,9 @@ public class Login extends SeleniumTestTemplate {
     public Login() throws DecoderConfigException {
     }
 
-    @Given("^User is on the customer web$")
-    public void user_is_on_the_customer_web() throws Throwable {
-        driver = initDriver(decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST));
-    }
+//    @Given("^User is on the customer web$")
+//    public void user_is_on_the_customer_web() throws Throwable {
+//        driver = initDriver(decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST));
+//    }
 
 }

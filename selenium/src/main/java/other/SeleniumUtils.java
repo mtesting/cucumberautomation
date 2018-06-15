@@ -28,6 +28,17 @@ public abstract class SeleniumUtils {
 
     private static final Logger log = Logger.getLogger(SeleniumUtils.class);
 
+    protected boolean exists(WebElement webElement) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        try {
+            return webElement.isDisplayed();
+        } catch (NoSuchElementException ignored) {
+            return false;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Constants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+        }
+    }
+
     protected boolean exists(By by, WebElement parent) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         try {
