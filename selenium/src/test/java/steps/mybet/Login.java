@@ -2,7 +2,6 @@ package steps.mybet;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 
 import PageFactory.MyBetPageFactory;
 import cucumber.api.java.en.Given;
@@ -77,7 +76,7 @@ public class Login {
 
     @Given("^the User is logged onto the customer Sportsbook$")
     public void the_user_is_logged_onto_the_customer_sportsbook() throws Throwable {
-        //driver.get(driver.getCurrentUrl() + "/en/sports-betting/soccer");
+        user_is_on_the_customer_web();
         user_enters_valid_credentials();
         user_clicks_on_Login_button();
         message_displayed_Login_Successfully();
