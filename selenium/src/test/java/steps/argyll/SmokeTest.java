@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import cucumber.api.java.en.Then;
 import other.SeleniumTestTemplate;
 
+@Deprecated
 public class SmokeTest extends SeleniumTestTemplate {
 
     @Then("^the homepage should load successfully$")

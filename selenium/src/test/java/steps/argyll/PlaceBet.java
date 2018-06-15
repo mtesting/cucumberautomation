@@ -19,6 +19,7 @@ import cucumber.api.java.en.When;
 import other.Constants;
 import other.SeleniumTestTemplate;
 
+@Deprecated
 public class PlaceBet extends SeleniumTestTemplate {
 
     @When("^User clicks on \"([^\"]*)\" selections$")

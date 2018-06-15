@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import other.SeleniumTestTemplate;
 
+@Deprecated
 public class Withdraw extends SeleniumTestTemplate {
 
     @When("^User clicks on Withdraw$")

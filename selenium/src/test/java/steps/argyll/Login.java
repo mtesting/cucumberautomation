@@ -11,6 +11,7 @@ import entities.Customer;
 import other.Constants;
 import other.SeleniumTestTemplate;
 
+@Deprecated
 public class Login extends SeleniumTestTemplate {
 
     private Customer account;

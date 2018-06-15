@@ -11,6 +11,7 @@ import other.SeleniumTestTemplate;
 
 import static org.junit.Assert.assertEquals;
 
+@Deprecated
 public class Registration extends SeleniumTestTemplate {
 
     private final TestUserDataService userDataService = new TestUserDataService();

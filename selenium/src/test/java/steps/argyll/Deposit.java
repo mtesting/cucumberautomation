@@ -9,6 +9,7 @@ import cucumber.api.java.en.When;
 import other.SeleniumTestTemplate;
 import util.Utils;
 
+@Deprecated
 public class Deposit extends SeleniumTestTemplate {
 
     @When("^User clicks on Deposit$")
