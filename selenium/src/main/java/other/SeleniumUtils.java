@@ -115,7 +115,11 @@ public abstract class SeleniumUtils {
      */
     protected void scrollIntoView(By by) {
         WebElement element = driver.findElement(by);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+        scrollIntoView(element);
+    }
+
+    protected void scrollIntoView(WebElement webElement) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", webElement);
         Utils.waitSeconds(1);
     }
 
