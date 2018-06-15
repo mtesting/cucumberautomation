@@ -31,7 +31,7 @@ public class SauceHelpers {
                 StringEncrypt.decryptXOR(Constants.SAUCELABS_ACCESS_KEY)
                 );
         Map<String, Object> updates = new HashMap<>();
-        String sessionId = (((RemoteWebDriver) SeleniumTestTemplate.driver).getSessionId()).toString();
+        String sessionId = SeleniumTestTemplate.getSessionId();
 
         updates.put("build", Constants.BUILD_TAG);
         updates.put("name", scenario.getName());
