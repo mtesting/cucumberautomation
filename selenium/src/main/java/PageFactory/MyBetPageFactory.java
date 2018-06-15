@@ -31,6 +31,12 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(id = "place-bet")
     private WebElement placeBetButton;
 
+    @FindBy(css = "li[class=slip-summary__total-stake] > span:nth-child(2)")
+    private WebElement betTotalStake;
+
+    @FindBy(css = "li[class=slip-summary__percentage-tax] > span:nth-child(2)")
+    private WebElement betTaxPercentage;
+
     @FindBy(css = "div[id='transactions'] span:nth-of-type(2)")
     private WebElement accountCashBalance;
 
@@ -46,7 +52,10 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(css = "div.betslip-success")
     private WebElement betsPlacementSuccessMsg;
 
-    public MyBetPageFactory() throws DecoderConfigException {
+    public MyBetPageFactory() {
+    }
+
+    public void initMyBetPageFactory() throws DecoderConfigException {
         Decoder decoder = DecoderManager.getManager().getDecoder();
         driver = initDriver(decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST));
         PageFactory.initElements(driver, this);
@@ -80,7 +89,7 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     }
 
     public void clickPlaceBetButton() {
-        //scrollIntoView(placeBetButton);
+        scrollIntoView(placeBetButton);
         placeBetButton.click();
     }
 
@@ -115,5 +124,13 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     /*public boolean isBetsPlacementMsgSuccessDisplayed(){
         waitFor(betsPlacementSuccessMsg);
     }*/
+
+    public String getBetTotalStake(){
+        return betTotalStake.getText();
+    }
+
+    public String getBetTaxPercentage(){
+        return betTaxPercentage.getText();
+    }
 
 }

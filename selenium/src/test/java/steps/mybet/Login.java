@@ -17,13 +17,14 @@ public class Login {
 
     protected static final Logger log = Logger.getLogger(Login.class);
 
-    public Login(Customer account) {
+    public Login(MyBetPageFactory myBetPageFactory, Customer account) {
+        this.myBetPageFactory = myBetPageFactory;
         this.account = account;
     }
 
     @Given("^User is on the customer web$")
     public void user_is_on_the_customer_web() throws Throwable {
-        myBetPageFactory = new MyBetPageFactory();
+        myBetPageFactory.initMyBetPageFactory();
     }
 
     @Given("^a \"([^\"]*)\" user using \"([^\"]*)\"$")
