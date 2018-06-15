@@ -93,10 +93,6 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         placeBetButton.click();
     }
 
-    public String getAccountCashBalance(){
-        return accountCashBalance.getText().substring(1);
-    }
-
     public List<WebElement> findAvailableSelections(){
         List<WebElement> selections = null;
         for (WebElement row : findAvailableMarkets()) {
@@ -110,8 +106,12 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         List<WebElement> cells;
         try{
             cells = fullScheduleWidget.findElements(By.className("multi-markets-view"));
-        }catch(NoSuchElementException ignored){
-            cells = leagueSelectorWidget.findElements(By.className("multi-markets-view"));
+        } catch (NoSuchElementException ignored){
+            try {
+                cells = leagueSelectorWidget.findElements(By.className("multi-markets-view"));
+            } catch (NoSuchElementException e) {
+                throw new NoSuchElementException("No markets widget found", e);
+            }
         }
         return cells;
     }
@@ -131,6 +131,10 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public String getBetTaxPercentage(){
         return betTaxPercentage.getText();
+    }
+
+    public String getAccountCashBalance(){
+        return accountCashBalance.getText();
     }
 
 }
