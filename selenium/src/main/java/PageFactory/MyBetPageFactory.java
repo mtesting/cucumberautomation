@@ -40,9 +40,11 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(css = "li[class=slip-summary__percentage-tax] > span:nth-child(2)")
     private WebElement betTaxPercentage;
 
-    //@FindBy(css = "div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__winnings'] span span")
-    @FindBy(css = "li[class='slip-summary__winnings'] > span:nth-child(2)")
+    @FindBy(css = "div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__winnings'] span span")
     private WebElement betPotentialWinnings;
+
+    @FindBy(css = "span[class='betId']")
+    private WebElement betRefNumber;
 
     @FindBy(css = "div[id='transactions'] span:nth-of-type(2)")
     private WebElement accountCashBalance;
@@ -199,6 +201,10 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public String getBetPotentialWinnings(){
         return betPotentialWinnings.getText();
+    }
+
+    public String getBetRefNumber(){
+        return betRefNumber.getText();
     }
 
     public String getAccountCashBalance(){
