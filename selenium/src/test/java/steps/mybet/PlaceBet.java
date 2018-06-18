@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Random;
 
+import PageFactory.MyBetBetslipPageFactory;
 import PageFactory.MyBetPageFactory;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -22,6 +23,7 @@ public class PlaceBet {
 
     private static final Logger log = Logger.getLogger(PlaceBet.class);
     private MyBetPageFactory myBetPageFactory;
+    private MyBetBetslipPageFactory myBetBetslipPageFactory;
     private Customer userAccount;
 
     public PlaceBet(MyBetPageFactory myBetPageFactory, Customer userAccount) {
@@ -70,32 +72,33 @@ public class PlaceBet {
 
     @And("^User enters a \"([^\"]*)\" bet amount \"([^\"]*)\"$")
     public void user_enters_a_bet_amount(String betType, String stake) throws Throwable {
+        myBetBetslipPageFactory = myBetPageFactory.betSlip();
         switch (betType.toUpperCase()) {
             case "SINGLE":
-                myBetPageFactory.openSingleBetsView();
-                myBetPageFactory.enterStakeInputSINGLE(stake);
+                myBetBetslipPageFactory.openSingleBetsView();
+                myBetBetslipPageFactory.enterStakeInputSINGLE(stake);
                 break;
             case "MULTIPLE":
-                myBetPageFactory.openAccumulatorBetsView();
-                myBetPageFactory.enterStakeInputAccumulator(stake);
+                myBetBetslipPageFactory.openAccumulatorBetsView();
+                myBetBetslipPageFactory.enterStakeInputAccumulator(stake);
                 break;
             case "SYSTEM":
-                myBetPageFactory.openSystemBetsView();
-                myBetPageFactory.enterStakeInputDOUBLE(stake);
-                myBetPageFactory.enterStakeInputPATENT(stake);
-                myBetPageFactory.enterStakeInputTRIXIE(stake);
+                myBetBetslipPageFactory.openSystemBetsView();
+                myBetBetslipPageFactory.enterStakeInputDOUBLE(stake);
+                myBetBetslipPageFactory.enterStakeInputPATENT(stake);
+                myBetBetslipPageFactory.enterStakeInputTRIXIE(stake);
                 break;
         }
 
-        myBetPageFactory.acceptAllOddsChanges();
+        myBetBetslipPageFactory.acceptAllOddsChanges();
     }
 
     @And("^User clicks on Place Bet$")
     public void user_clicks_on_Place_Bet() throws Throwable {
-        userAccount.subtract(myBetPageFactory.getBetTotalStake().substring(1));
+        userAccount.subtract(myBetBetslipPageFactory.getBetTotalStake().substring(1));
 
         try{
-            userAccount.subtract(myBetPageFactory.getBetTaxPercentage().substring(3));
+            userAccount.subtract(myBetBetslipPageFactory.getBetTaxPercentage().substring(3));
         } catch (NoSuchElementException e){
             log.error("No tax info found when placing bet", e);
         }
@@ -105,7 +108,7 @@ public class PlaceBet {
 
     @Then("^A Bet Placed message is displayed$")
     public void a_Bet_Placed_message_is_displayed() throws Throwable {
-        myBetPageFactory.waitForBetslipSuccessMsg();
+        myBetBetslipPageFactory.waitForBetslipSuccessMsg();
         log.info("Bet placed.");
 
         Utils.waitSeconds(1);
@@ -115,7 +118,7 @@ public class PlaceBet {
 
     @Then("^An unsuccessful message is displayed$")
     public void an_unsuccessful_message_is_displayed() throws Throwable {
-        myBetPageFactory.waitForBetslipErrorMsg();
+        myBetBetslipPageFactory.waitForBetslipErrorMsg();
         log.info("Bet not placed.");
     }
 
@@ -140,11 +143,11 @@ public class PlaceBet {
         user_clicks_on_Place_Bet();
         a_Bet_Placed_message_is_displayed();
 
-        String betRef = myBetPageFactory.getBetRefNumber().substring(6);
+        String betRef = myBetBetslipPageFactory.getBetRefNumber().substring(6);
         log.info("Bet ref = " + betRef);
         userAccount.addNewBet(betRef);
 
-        userAccount.bets.get(0).setPotentialWinnings(myBetPageFactory.getBetPotentialWinnings().substring(1));
+        userAccount.bets.get(0).setPotentialWinnings(myBetBetslipPageFactory.getBetPotentialWinnings().substring(1));
         log.info("Potential Winnings = " + userAccount.bets.get(0).getPotentialWinnings());
 
         //userAccount.bets.get(0).setTotalStake(myBetPageFactory.getBetTotalStake().substring(1));

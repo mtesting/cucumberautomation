@@ -34,23 +34,8 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(id = "place-bet")
     private WebElement placeBetButton;
 
-    @FindBy(css = "li[class=slip-summary__total-stake] > span:nth-child(2)")
-    private WebElement betTotalStake;
-
-    @FindBy(css = "li[class=slip-summary__percentage-tax] > span:nth-child(2)")
-    private WebElement betTaxPercentage;
-
-    @FindBy(css = "div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__winnings'] span span")
-    private WebElement betPotentialWinnings;
-
-    @FindBy(css = "span[class='betId']")
-    private WebElement betRefNumber;
-
     @FindBy(css = "div[id='transactions'] span:nth-of-type(2)")
     private WebElement accountCashBalance;
-
-    @FindBy(xpath = "id('betslip')//li[@class='higher-odds']")
-    private WebElement higherOddsCheckbox;
 
     @FindBy(xpath = "//section[contains(@class, 'full-schedule-widget')]")
     private WebElement fullScheduleWidget;
@@ -58,38 +43,8 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(xpath = "//section[contains(@class, 'league-selector-widget')]")
     private WebElement leagueSelectorWidget;
 
-    @FindBy(css = "div.betslip-success")
-    private WebElement betsPlacementSuccessMsg;
-
-    @FindBy(css = "div.single-bet__error")
-    private WebElement betsPlacementErrorMsg;
-
     @FindBy(className = "betslip-icon")
     private WebElement betslipIcon;
-
-    @FindBy(xpath = "id('betslip')//div[@class='single-grouped-bet-view']")
-    private WebElement singleBetsView;
-
-    @FindBy(xpath = "id('betslip')//div[@class='system-bets-view']")
-    private WebElement systemBetsView;
-
-    @FindBy(xpath = "id('betslip')//div[@class='combi-bet-view']")
-    private WebElement accumulatorBetsView;
-
-    @FindBy(xpath = "id('betslip')//div[@class='single-grouped-bet-view']//input")
-    private WebElement stakeInputSINGLE;
-
-    @FindBy(css = "[data-test-stake-input='stakeInputDOUBLE']")
-    private WebElement stakeInputDOUBLE;
-
-    @FindBy(css = "[data-test-stake-input='stakeInputTRIXIE']")
-    private WebElement stakeInputTRIXIE;
-
-    @FindBy(css = "[data-test-stake-input='stakeInputPATENT']")
-    private WebElement stakeInputPATENT;
-
-    @FindBy(xpath = "id('betslip')//div[@class='combi-bet-view']//input")
-    private WebElement stakeInputAccumulator;
 
     public MyBetPageFactory() {
     }
@@ -186,27 +141,6 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         return cells;
     }
 
-    public void acceptAllOddsChanges(){
-        scrollIntoView(higherOddsCheckbox);
-        checkBox(higherOddsCheckbox, "Accept all odds changes");
-    }
-
-    public String getBetTotalStake(){
-        return betTotalStake.getText();
-    }
-
-    public String getBetTaxPercentage(){
-        return betTaxPercentage.getText();
-    }
-
-    public String getBetPotentialWinnings(){
-        return betPotentialWinnings.getText();
-    }
-
-    public String getBetRefNumber(){
-        return betRefNumber.getText();
-    }
-
     public String getAccountCashBalance(){
         return accountCashBalance.getText();
     }
@@ -223,49 +157,8 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         return driver.findElement(By.id("betslip")).findElements(By.className("selection-group"));
     }
 
-    public void openSingleBetsView(){
-        scrollIntoView(singleBetsView);
-        singleBetsView.click();
-    }
-
-    public void openSystemBetsView(){
-        scrollIntoView(systemBetsView);
-        systemBetsView.click();
-    }
-
-    public void openAccumulatorBetsView(){
-        scrollIntoView(accumulatorBetsView);
-        if(!accumulatorBetsView.isDisplayed()){
-            accumulatorBetsView.click();
-        }
-    }
-
-    public void enterStakeInputSINGLE(String stake){
-        stakeInputSINGLE.sendKeys(stake);
-    }
-
-    public void enterStakeInputDOUBLE(String stake){
-        stakeInputDOUBLE.sendKeys(stake);
-    }
-
-    public void enterStakeInputTRIXIE(String stake){
-        stakeInputTRIXIE.sendKeys(stake);
-    }
-
-    public void enterStakeInputPATENT(String stake){
-        stakeInputPATENT.sendKeys(stake);
-    }
-
-    public void enterStakeInputAccumulator(String stake){
-        stakeInputAccumulator.sendKeys(stake);
-    }
-
-    public void waitForBetslipSuccessMsg(){
-        waitFor(betsPlacementSuccessMsg);
-    }
-
-    public void waitForBetslipErrorMsg(){
-        waitFor(betsPlacementErrorMsg);
+    public MyBetBetslipPageFactory betSlip(){
+        return new MyBetBetslipPageFactory();
     }
 
 }
