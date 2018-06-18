@@ -127,6 +127,7 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
             }
         }
 
+        driver.manage().timeouts().implicitlyWait(Constants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         log.info("Selections added: " + availableSelections.size());
         return availableSelections;
     }
