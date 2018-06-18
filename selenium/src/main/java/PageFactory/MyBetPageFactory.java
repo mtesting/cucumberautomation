@@ -58,6 +58,30 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(className = "betslip-icon")
     private WebElement betslipIcon;
 
+    @FindBy(xpath = "id('betslip')//div[@class='single-grouped-bet-view']")
+    private WebElement singleBetsView;
+
+    @FindBy(xpath = "id('betslip')//div[@class='system-bets-view']")
+    private WebElement systemBetsView;
+
+    @FindBy(xpath = "id('betslip')//div[@class='combi-bet-view']")
+    private WebElement accumulatorBetsView;
+
+    @FindBy(xpath = "id('betslip')//div[@class='single-grouped-bet-view']//input")
+    private WebElement stakeInputSINGLE;
+
+    @FindBy(css = "[data-test-stake-input='stakeInputDOUBLE']")
+    private WebElement stakeInputDOUBLE;
+
+    @FindBy(css = "[data-test-stake-input='stakeInputTRIXIE']")
+    private WebElement stakeInputTRIXIE;
+
+    @FindBy(css = "[data-test-stake-input='stakeInputPATENT']")
+    private WebElement stakeInputPATENT;
+
+    @FindBy(xpath = "id('betslip')//div[@class='combi-bet-view']//input")
+    private WebElement stakeInputAccumulator;
+
     public MyBetPageFactory() {
     }
 
@@ -150,7 +174,7 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     }
 
     public void acceptAllOddsChanges(){
-        //scrollIntoView(higherOddsCheckbox);
+        scrollIntoView(higherOddsCheckbox);
         checkBox(higherOddsCheckbox, "Accept all odds changes");
     }
 
@@ -180,6 +204,43 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public List<WebElement> getTipsOnBetslip(){
         return driver.findElement(By.id("betslip")).findElements(By.className("selection-group"));
+    }
+
+    public void openSingleBetsView(){
+        scrollIntoView(singleBetsView);
+        singleBetsView.click();
+    }
+
+    public void openSystemBetsView(){
+        scrollIntoView(systemBetsView);
+        systemBetsView.click();
+    }
+
+    public void openAccumulatorBetsView(){
+        scrollIntoView(accumulatorBetsView);
+        if(!accumulatorBetsView.isDisplayed()){
+            accumulatorBetsView.click();
+        }
+    }
+
+    public void enterStakeInputSINGLE(String stake){
+        stakeInputSINGLE.sendKeys(stake);
+    }
+
+    public void enterStakeInputDOUBLE(String stake){
+        stakeInputDOUBLE.sendKeys(stake);
+    }
+
+    public void enterStakeInputTRIXIE(String stake){
+        stakeInputTRIXIE.sendKeys(stake);
+    }
+
+    public void enterStakeInputPATENT(String stake){
+        stakeInputPATENT.sendKeys(stake);
+    }
+
+    public void enterStakeInputAccumulator(String stake){
+        stakeInputAccumulator.sendKeys(stake);
     }
 
 }

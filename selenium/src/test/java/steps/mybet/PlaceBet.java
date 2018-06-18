@@ -73,34 +73,28 @@ public class PlaceBet extends SeleniumTestTemplate {
 
         if (driver.findElement(By.cssSelector("a[class='betslip-icon']")).isDisplayed()) {
             if (!exists(By.cssSelector("div[class='bet-slip-container open']"))) {
-                driver.findElement(By.className("icon-betslip")).click();
+                myBetPageFactory.clickOnBetslipIcon();
             }
         }
 
         switch (betType.toUpperCase()) {
             case "SINGLE":
-                scrollIntoView(By.xpath("id('betslip')//div[@class='single-grouped-bet-view']")); // scroll field "Singles" of betslip into view so you can click on it
-                driver.findElement(By.xpath("id('betslip')//div[@class='single-grouped-bet-view']")).click(); // open input field
-                driver.findElement(By.xpath("id('betslip')//div[@class='single-grouped-bet-view']//input")).sendKeys(stake);
+                myBetPageFactory.openSingleBetsView();
+                myBetPageFactory.enterStakeInputSINGLE(stake);
                 break;
             case "MULTIPLE":
-                scrollIntoView(By.xpath("id('betslip')//div[@class='combi-bet-view']"));
-                if (!driver.findElement(By.xpath("id('betslip')//div[@class='combi-bet-view']//input")).isDisplayed()) {
-                    driver.findElement(By.xpath("id('betslip')//div[@class='combi-bet-view']")).click();
-                }
-                driver.findElement(By.xpath("id('betslip')//div[@class='combi-bet-view']//input")).sendKeys(stake);
+                myBetPageFactory.openAccumulatorBetsView();
+                myBetPageFactory.enterStakeInputAccumulator(stake);
                 break;
             case "SYSTEM":
-                scrollIntoView(By.xpath("id('betslip')//div[@class='system-bets-view']"));
-                driver.findElement(By.xpath("id('betslip')//div[@class='system-bets-view']")).click();
-                driver.findElement(By.cssSelector("[data-test-stake-input='stakeInputDOUBLE']")).sendKeys(stake);
-                driver.findElement(By.cssSelector("[data-test-stake-input='stakeInputTRIXIE']")).sendKeys(stake);
-                driver.findElement(By.cssSelector("[data-test-stake-input='stakeInputPATENT']")).sendKeys(stake);
+                myBetPageFactory.openSystemBetsView();
+                myBetPageFactory.enterStakeInputDOUBLE(stake);
+                myBetPageFactory.enterStakeInputPATENT(stake);
+                myBetPageFactory.enterStakeInputTRIXIE(stake);
                 break;
         }
 
-        scrollIntoView(By.xpath("id('betslip')//li[@class='higher-odds']"));
-        checkBox(driver.findElement(By.xpath("id('betslip')//li[@class='higher-odds']")), "Accept all odds changes");
+        myBetPageFactory.acceptAllOddsChanges();
     }
 
     @And("^User clicks on Place Bet$")
@@ -123,7 +117,7 @@ public class PlaceBet extends SeleniumTestTemplate {
 
         Utils.waitSeconds(1);
         Assert.assertEquals("Cash balance not updated properly", userAccount.getBalance(),
-                NumberUtil.parseToBigDecimal(driver.findElement(By.cssSelector("div[id='transactions'] span:nth-of-type(2)")).getText().substring(1)));
+                NumberUtil.parseToBigDecimal(myBetPageFactory.getAccountCashBalance().substring(1)));
     }
 
     @Then("^An unsuccessful message is displayed$")
