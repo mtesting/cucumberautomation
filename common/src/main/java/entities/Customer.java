@@ -13,6 +13,7 @@ public class Customer {
     public PlaceBetsResponse placeBetsResponse;
     private String username;
     private BigDecimal balance;
+    private String betOutcome;
 
     public Customer() {
         bets = new ArrayList<>();
@@ -60,4 +61,11 @@ public class Customer {
         bets.add(new Bet(Long.valueOf(betId)));
     }
 
+    public String getBetOutcome() {
+        return betOutcome;
+    }
+
+    public void setBetOutcome(String betOutcome) {
+        this.betOutcome = betOutcome;
+    }
 }
