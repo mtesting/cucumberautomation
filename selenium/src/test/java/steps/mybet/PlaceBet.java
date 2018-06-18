@@ -70,13 +70,6 @@ public class PlaceBet extends SeleniumTestTemplate {
 
     @And("^User enters a \"([^\"]*)\" bet amount \"([^\"]*)\"$")
     public void user_enters_a_bet_amount(String betType, String stake) throws Throwable {
-
-        if (driver.findElement(By.cssSelector("a[class='betslip-icon']")).isDisplayed()) {
-            if (!exists(By.cssSelector("div[class='bet-slip-container open']"))) {
-                myBetPageFactory.clickOnBetslipIcon();
-            }
-        }
-
         switch (betType.toUpperCase()) {
             case "SINGLE":
                 myBetPageFactory.openSingleBetsView();
