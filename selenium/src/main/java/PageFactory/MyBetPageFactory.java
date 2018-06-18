@@ -40,6 +40,10 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(css = "li[class=slip-summary__percentage-tax] > span:nth-child(2)")
     private WebElement betTaxPercentage;
 
+    //@FindBy(css = "div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__winnings'] span span")
+    @FindBy(css = "li[class='slip-summary__winnings'] > span:nth-child(2)")
+    private WebElement betPotentialWinnings;
+
     @FindBy(css = "div[id='transactions'] span:nth-of-type(2)")
     private WebElement accountCashBalance;
 
@@ -54,6 +58,9 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     @FindBy(css = "div.betslip-success")
     private WebElement betsPlacementSuccessMsg;
+
+    @FindBy(css = "div.single-bet__error")
+    private WebElement betsPlacementErrorMsg;
 
     @FindBy(className = "betslip-icon")
     private WebElement betslipIcon;
@@ -123,6 +130,10 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         placeBetButton.click();
     }
 
+    public void clickOnSelection(WebElement webElement){
+        clickByActionOn(webElement);
+    }
+
     public List<WebElement> findAvailableSelections(){
         List<WebElement> availableMarkets = findAvailableMarkets();
         List<WebElement> availableSelections = new ArrayList<>();
@@ -178,16 +189,16 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         checkBox(higherOddsCheckbox, "Accept all odds changes");
     }
 
-    /*public boolean isBetsPlacementMsgSuccessDisplayed(){
-        waitFor(betsPlacementSuccessMsg);
-    }*/
-
     public String getBetTotalStake(){
         return betTotalStake.getText();
     }
 
     public String getBetTaxPercentage(){
         return betTaxPercentage.getText();
+    }
+
+    public String getBetPotentialWinnings(){
+        return betPotentialWinnings.getText();
     }
 
     public String getAccountCashBalance(){
@@ -241,6 +252,14 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public void enterStakeInputAccumulator(String stake){
         stakeInputAccumulator.sendKeys(stake);
+    }
+
+    public void waitForBetslipSuccessMsg(){
+        waitFor(betsPlacementSuccessMsg);
+    }
+
+    public void waitForBetslipErrorMsg(){
+        waitFor(betsPlacementErrorMsg);
     }
 
 }

@@ -108,6 +108,14 @@ public abstract class SeleniumUtils {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
+    protected void waitFor(WebElement webElement) {
+        Wait wait = new FluentWait(driver)
+                .withTimeout(Duration.of(Constants.DEFAULT_TIMEOUT, ChronoUnit.SECONDS))
+                .pollingEvery(Duration.of(5, ChronoUnit.SECONDS))
+                .ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     /**
      * Scrolls the webpage view to an specific element
      *

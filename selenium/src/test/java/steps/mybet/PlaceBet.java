@@ -1,5 +1,6 @@
 package steps.mybet;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -15,12 +16,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import entities.Customer;
-import other.SeleniumTestTemplate;
 import util.NumberUtil;
 import util.Utils;
 
-public class PlaceBet extends SeleniumTestTemplate {
+public class PlaceBet {
 
+    private static final Logger log = Logger.getLogger(PlaceBet.class);
     private MyBetPageFactory myBetPageFactory;
     private Customer userAccount;
 
@@ -48,7 +49,7 @@ public class PlaceBet extends SeleniumTestTemplate {
             int randomIndex = random.nextInt(numberOfOutcomes);
             WebElement outcome = outcomes.get(randomIndex);
             try {
-                clickByActionOn(outcome);
+                myBetPageFactory.clickOnSelection(outcome);
                 outcomes.remove(outcome);
                 numberOfOutcomes--;
             } catch (WebDriverException e) {
@@ -105,7 +106,7 @@ public class PlaceBet extends SeleniumTestTemplate {
 
     @Then("^A Bet Placed message is displayed$")
     public void a_Bet_Placed_message_is_displayed() throws Throwable {
-        waitFor(By.cssSelector("div.betslip-success"));
+        myBetPageFactory.waitForBetslipSuccessMsg();
         log.info("Bet placed.");
 
         Utils.waitSeconds(1);
@@ -115,14 +116,12 @@ public class PlaceBet extends SeleniumTestTemplate {
 
     @Then("^An unsuccessful message is displayed$")
     public void an_unsuccessful_message_is_displayed() throws Throwable {
-        waitFor(By.cssSelector("div.single-bet__error"));
+        myBetPageFactory.waitForBetslipErrorMsg();
         log.info("Bet not placed.");
     }
 
     @Given("^user has placed a \"([^\"]*)\" bet$")
     public void user_has_placed_a_bet(String betType) throws Throwable {
-        userAccount.setBalance(driver.findElement(By.cssSelector("div[id='transactions'] span:nth-of-type(2)")).getText().substring(1));
-        log.info("Initial balance=" + userAccount.getBalance());
 
         int selections = 1;
         switch (betType.toUpperCase()) {
@@ -148,14 +147,10 @@ public class PlaceBet extends SeleniumTestTemplate {
         log.info("Bet ref = " + betRefNumber);
         userAccount.addNewBet(betRefNumber);*/
 
-        userAccount.bets.get(0).setPotentialWinnings(driver.findElement(
-                By.cssSelector("div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__winnings'] span span"))
-                .getText().substring(1));
+        userAccount.bets.get(0).setPotentialWinnings(myBetPageFactory.getBetPotentialWinnings().substring(1));
         log.info("Potential Winnings = " + userAccount.bets.get(0).getPotentialWinnings());
 
-        userAccount.bets.get(0).setTotalStake(driver.findElement(
-                By.cssSelector("div[class='bet-slip-confirmation-view row bet-row confirmation'] li[class='slip-summary__total-stake'] span span"))
-                .getText().substring(1));
+        userAccount.bets.get(0).setTotalStake(myBetPageFactory.getBetTotalStake().substring(1));
         log.info("Total Stake = " + userAccount.bets.get(0).getTotalStake());
 
         log.info("New balance=" + userAccount.getBalance());
