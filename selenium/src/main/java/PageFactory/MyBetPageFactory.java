@@ -2,11 +2,14 @@ package PageFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import decoders.Decoder;
 import decoders.DecoderConfigException;
@@ -94,12 +97,38 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     }
 
     public List<WebElement> findAvailableSelections(){
-        List<WebElement> selections = null;
-        for (WebElement row : findAvailableMarkets()) {
-            selections.addAll(row.findElements(By.className("selection-view"))); //TODO possible null maybe add a try
+        List<WebElement> availableMarkets = findAvailableMarkets();
+        List<WebElement> availableSelections = new ArrayList<>();
+        for (WebElement row : availableMarkets) {
+            List<WebElement> selectionCells = row.findElements(By.className("selection-view"));
+            log.info("Potential selections found: " + selectionCells.size());
+
+            for (WebElement selection : selectionCells) {
+                try {
+                    if (exists(By.className("price"), selection)) {
+                        if (!selection.getText().contains("\n")) {
+                            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+                            if (selection.getTagName().equalsIgnoreCase("a")) {
+                                try {
+                                    WebElement lockIcon = selection.findElement(By.className("icon-lock"));
+                                    if (!lockIcon.isDisplayed() && !selection.getText().isEmpty()) {
+                                        availableSelections.add(selection);
+                                        break;
+                                    }
+                                } catch (NoSuchElementException ignored) {
+                                    availableSelections.add(selection);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
+                }
+            }
         }
-        log.info("Potential selections found: " + selections.size());
-        return selections;
+
+        log.info("Selections added: " + availableSelections.size());
+        return availableSelections;
     }
 
     private List<WebElement> findAvailableMarkets(){
