@@ -156,11 +156,6 @@ public abstract class SeleniumUtils {
         log.info("Clicked " + checkBox + " (WebElement) successfully.");
     }
 
-    protected boolean isBetslipIconized() {
-        By by = By.className("betslip-icon");
-        return exists(by) && driver.findElement(by).isDisplayed();
-    }
-
     /**
      * Logs the punter version reading it from the page source
      */

@@ -55,6 +55,9 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(css = "div.betslip-success")
     private WebElement betsPlacementSuccessMsg;
 
+    @FindBy(className = "betslip-icon")
+    private WebElement betslipIcon;
+
     public MyBetPageFactory() {
     }
 
@@ -165,6 +168,18 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public String getAccountCashBalance(){
         return accountCashBalance.getText();
+    }
+
+    public boolean isBetslipIconized() {
+        return exists(betslipIcon) && betslipIcon.isDisplayed();
+    }
+
+    public void clickOnBetslipIcon() {
+        betslipIcon.click();
+    }
+
+    public List<WebElement> getTipsOnBetslip(){
+        return driver.findElement(By.id("betslip")).findElements(By.className("selection-group"));
     }
 
 }
