@@ -91,6 +91,10 @@ public abstract class SeleniumUtils {
      */
     protected void javascriptClick(By by) {
         WebElement element = driver.findElement(by);
+        javascriptClick(element);
+    }
+
+    protected void javascriptClick(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }

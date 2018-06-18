@@ -3,12 +3,15 @@ package steps.mybet;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
+import java.math.BigDecimal;
+
 import PageFactory.MyBetPageFactory;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import entities.Customer;
 import other.Constants;
+import util.NumberUtil;
 
 public class Login {
 
@@ -81,6 +84,28 @@ public class Login {
         user_enters_valid_credentials();
         user_clicks_on_Login_button();
         message_displayed_Login_Successfully();
+    }
+
+    @Then("^the user cash balance gets updated properly$")
+    public void the_user_cash_balance_gets_updated_properly() throws Throwable {
+        the_user_is_logged_onto_the_customer_sportsbook();
+        switch (account.getBetOutcome().toUpperCase()) {
+            case "WIN":
+                //customer.deposit(add(customer.getTotalStake().toString());
+                account.deposit(account.bets.get(0).getPotentialWinnings().toString());
+                log.info("Win add=" + account.bets.get(0).getPotentialWinnings());
+                break;
+            case "LOSE":
+                log.info("Lose substract=" + account.bets.get(0).getTotalStake());
+                break;
+            case "VOID - FEED":
+                account.deposit(account.bets.get(0).getTotalStake().toString());
+                log.info("Void add=" + account.bets.get(0).getTotalStake());
+                break;
+        }
+        BigDecimal actualBalance = NumberUtil.parseToBigDecimal(myBetPageFactory.getAccountCashBalance().substring(1));
+        log.info("Actual balance=" + actualBalance);
+        Assert.assertEquals("Balance not updated properly", account.getBalance(), actualBalance);
     }
 
 }

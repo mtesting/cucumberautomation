@@ -2,7 +2,6 @@ package steps.mybet;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -122,7 +121,6 @@ public class PlaceBet {
 
     @Given("^user has placed a \"([^\"]*)\" bet$")
     public void user_has_placed_a_bet(String betType) throws Throwable {
-
         int selections = 1;
         switch (betType.toUpperCase()) {
             case "SINGLE":
@@ -142,16 +140,15 @@ public class PlaceBet {
         user_clicks_on_Place_Bet();
         a_Bet_Placed_message_is_displayed();
 
-        //FIXME assign the betRefNumber in the userAccount object
-        /*betRefNumber = driver.findElement(By.cssSelector("span[class='betId']")).getText().substring(6);
-        log.info("Bet ref = " + betRefNumber);
-        userAccount.addNewBet(betRefNumber);*/
+        String betRef = myBetPageFactory.getBetRefNumber().substring(6);
+        log.info("Bet ref = " + betRef);
+        userAccount.addNewBet(betRef);
 
         userAccount.bets.get(0).setPotentialWinnings(myBetPageFactory.getBetPotentialWinnings().substring(1));
         log.info("Potential Winnings = " + userAccount.bets.get(0).getPotentialWinnings());
 
-        userAccount.bets.get(0).setTotalStake(myBetPageFactory.getBetTotalStake().substring(1));
-        log.info("Total Stake = " + userAccount.bets.get(0).getTotalStake());
+        //userAccount.bets.get(0).setTotalStake(myBetPageFactory.getBetTotalStake().substring(1));
+        //log.info("Total Stake = " + userAccount.bets.get(0).getTotalStake());
 
         log.info("New balance=" + userAccount.getBalance());
     }
