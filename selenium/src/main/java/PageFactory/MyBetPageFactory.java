@@ -17,7 +17,7 @@ import decoders.DecoderManager;
 import other.Constants;
 import other.SeleniumTestTemplate;
 
-public class MyBetPageFactory extends SeleniumTestTemplate {
+public class MyBetPageFactory extends SeleniumTestTemplate implements SportsbookPageTemplate {
 
     @FindBy(id = "usernameInput")
     private WebElement loginUsername;
@@ -43,12 +43,15 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(className = "betslip-icon")
     private WebElement betslipIcon;
 
+    @FindBy(id = "registerBtn")
+    private WebElement registerBtn;
+
     public MyBetPageFactory() {
     }
 
     public void initMyBetPageFactory() throws DecoderConfigException {
         Decoder decoder = DecoderManager.getManager().getDecoder();
-        driver = initDriver(decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST));
+        driver = initDriver("https://sportsbook-demo.amelco.co.uk/en/sports-betting/tennis");
         PageFactory.initElements(driver, this);
     }
 
@@ -151,6 +154,11 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
 
     public MyBetBetslipPageFactory betSlip(){
         return new MyBetBetslipPageFactory();
+    }
+
+    public MyBetRegistrationPageFactory newRegistration(){
+        registerBtn.click();
+        return new MyBetRegistrationPageFactory();
     }
 
 }

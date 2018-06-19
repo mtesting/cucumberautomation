@@ -197,7 +197,11 @@ public abstract class SeleniumUtils {
      * @param option select option value
      */
     protected void selectElement(By by, String option) {
-        Select select = new Select(driver.findElement(by));
+        selectElement(driver.findElement(by), option);
+    }
+
+    protected void selectElement(WebElement element, String option) {
+        Select select = new Select(element);
         select.selectByVisibleText(option);
         log.debug("Select option selected: " + option);
     }
