@@ -28,6 +28,17 @@ public abstract class SeleniumUtils {
 
     private static final Logger log = Logger.getLogger(SeleniumUtils.class);
 
+    protected boolean exists(WebElement webElement) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        try {
+            return webElement.isDisplayed();
+        } catch (NoSuchElementException ignored) {
+            return false;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Constants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+        }
+    }
+
     protected boolean exists(By by, WebElement parent) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         try {
@@ -80,6 +91,10 @@ public abstract class SeleniumUtils {
      */
     protected void javascriptClick(By by) {
         WebElement element = driver.findElement(by);
+        javascriptClick(element);
+    }
+
+    protected void javascriptClick(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
@@ -97,6 +112,14 @@ public abstract class SeleniumUtils {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
+    protected void waitFor(WebElement webElement) {
+        Wait wait = new FluentWait(driver)
+                .withTimeout(Duration.of(Constants.DEFAULT_TIMEOUT, ChronoUnit.SECONDS))
+                .pollingEvery(Duration.of(5, ChronoUnit.SECONDS))
+                .ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     /**
      * Scrolls the webpage view to an specific element
      *
@@ -104,7 +127,11 @@ public abstract class SeleniumUtils {
      */
     protected void scrollIntoView(By by) {
         WebElement element = driver.findElement(by);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+        scrollIntoView(element);
+    }
+
+    protected void scrollIntoView(WebElement webElement) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", webElement);
         Utils.waitSeconds(1);
     }
 
@@ -141,11 +168,6 @@ public abstract class SeleniumUtils {
         log.info("Clicked " + checkBox + " (WebElement) successfully.");
     }
 
-    protected boolean isBetslipIconized() {
-        By by = By.className("betslip-icon");
-        return exists(by) && driver.findElement(by).isDisplayed();
-    }
-
     /**
      * Logs the punter version reading it from the page source
      */
@@ -175,7 +197,11 @@ public abstract class SeleniumUtils {
      * @param option select option value
      */
     protected void selectElement(By by, String option) {
-        Select select = new Select(driver.findElement(by));
+        selectElement(driver.findElement(by), option);
+    }
+
+    protected void selectElement(WebElement element, String option) {
+        Select select = new Select(element);
         select.selectByVisibleText(option);
         log.debug("Select option selected: " + option);
     }

@@ -29,7 +29,7 @@ import util.StringEncrypt;
 public abstract class SeleniumTestTemplate extends SeleniumUtils {
 
     protected static final Logger log = Logger.getLogger(SeleniumTestTemplate.class);
-    public static WebDriver driver;
+    protected static WebDriver driver;
     private DesiredCapabilities capabilities;
 
     /**
@@ -286,7 +286,7 @@ public abstract class SeleniumTestTemplate extends SeleniumUtils {
                     capabilities.setPlatform(Platform.EL_CAPITAN);
                     break;
                 case "iOS":
-                    capabilities.setCapability("platformName", "iOS");
+                    capabilities.setPlatform(Platform.IOS);
                     break;
                 case "Android":
                     capabilities.setPlatform(Platform.ANDROID);
@@ -298,6 +298,10 @@ public abstract class SeleniumTestTemplate extends SeleniumUtils {
         } else {
             log.warn("The platformType property is null");
         }
+    }
+
+    public static String getSessionId(){
+        return (((RemoteWebDriver) SeleniumTestTemplate.driver).getSessionId()).toString();
     }
 
 }

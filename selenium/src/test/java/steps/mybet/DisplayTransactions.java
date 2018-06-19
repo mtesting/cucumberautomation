@@ -27,14 +27,14 @@ public class DisplayTransactions extends SeleniumTestTemplate {
     public void the_user_has_perform_a_operation(String transactionType) throws Throwable {
         switch (transactionType) {
             case "Bets":
-                PlaceBet placeBet = new PlaceBet(userAccount);
-                int selections = 1;
-                String stake = "1";
-                String betType = "SINGLE";
-                placeBet.user_clicks_on_selections(selections);
-                placeBet.user_enters_a_bet_amount(betType, stake);
-                placeBet.user_clicks_on_Place_Bet();
-                placeBet.a_Bet_Placed_message_is_displayed();
+//                PlaceBet placeBet = new PlaceBet(userAccount);
+//                int selections = 1;
+//                String stake = "1";
+//                String betType = "SINGLE";
+//                placeBet.user_clicks_on_selections(selections);
+//                placeBet.user_enters_a_bet_amount(betType, stake);
+//                placeBet.user_clicks_on_Place_Bet();
+//                placeBet.a_Bet_Placed_message_is_displayed();
                 break;
             case "Deposit":
                 Deposit deposit = new Deposit(userAccount);
