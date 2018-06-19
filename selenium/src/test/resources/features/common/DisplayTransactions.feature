@@ -17,7 +17,7 @@ Feature: Display Transactions
 
     Examples:
       | trans_type     |
-      | Bets           |
+      #| Bets           |
       | Deposit        |
       | Withdrawal     |
       | Chips Transfer |
