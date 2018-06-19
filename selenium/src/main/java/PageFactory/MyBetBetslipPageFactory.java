@@ -8,6 +8,9 @@ import other.SeleniumTestTemplate;
 
 public class MyBetBetslipPageFactory extends SeleniumTestTemplate {
 
+    @FindBy(id = "place-bet")
+    private WebElement placeBetButton;
+
     @FindBy(css = "li[class=slip-summary__total-stake] > span:nth-child(2)")
     private WebElement betTotalStake;
 
@@ -55,6 +58,11 @@ public class MyBetBetslipPageFactory extends SeleniumTestTemplate {
 
     MyBetBetslipPageFactory(){
         PageFactory.initElements(driver, this);
+    }
+
+    public void clickPlaceBetButton() {
+        scrollIntoView(placeBetButton);
+        placeBetButton.click();
     }
 
     public void acceptAllOddsChanges(){

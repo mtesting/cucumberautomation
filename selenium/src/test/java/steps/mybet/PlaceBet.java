@@ -103,7 +103,7 @@ public class PlaceBet {
             log.error("No tax info found when placing bet", e);
         }
 
-        myBetPageFactory.clickPlaceBetButton();
+        myBetBetslipPageFactory.clickPlaceBetButton();
     }
 
     @Then("^A Bet Placed message is displayed$")

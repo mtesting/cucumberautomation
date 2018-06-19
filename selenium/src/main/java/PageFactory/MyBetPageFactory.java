@@ -31,9 +31,6 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
     @FindBy(id = "logoutBtn")
     private WebElement logoutButton;
 
-    @FindBy(id = "place-bet")
-    private WebElement placeBetButton;
-
     @FindBy(css = "div[id='transactions'] span:nth-of-type(2)")
     private WebElement accountCashBalance;
 
@@ -80,11 +77,6 @@ public class MyBetPageFactory extends SeleniumTestTemplate {
         if (!exists(By.xpath("//*[contains(text(), 'Username/password incorrect.')]"))) {
             return exists(By.className("icon-alert"));
         } else return true;
-    }
-
-    public void clickPlaceBetButton() {
-        scrollIntoView(placeBetButton);
-        placeBetButton.click();
     }
 
     public void clickOnSelection(WebElement webElement){
