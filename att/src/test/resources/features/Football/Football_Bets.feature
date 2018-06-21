@@ -36,7 +36,6 @@ Feature: Football Bets Placement
       | betType   | SINGLE        |
       | mktType   | SOCCER:FT:AXB |
       | winType   | WIN           |
-      | priceType | LIVE          |
 
   @Intralot
   @F-BrMirrorBetsDouble @F-BrMirrorBets
@@ -49,7 +48,6 @@ Feature: Football Bets Placement
       | betType   | DOUBLE        |
       | mktType   | SOCCER:FT:AXB |
       | winType   | WIN           |
-      | priceType | LIVE          |
 
   @Intralot
   @F-BrMirrorBetsTrixie @F-BrMirrorBets
@@ -62,7 +60,6 @@ Feature: Football Bets Placement
       | betType   | TRIXIE        |
       | mktType   | SOCCER:FT:AXB |
       | winType   | WIN           |
-      | priceType | LIVE          |
 
   @F-MyBetAtt
   Scenario: Football single bet placement
@@ -73,4 +70,3 @@ Feature: Football Bets Placement
       | betType   | SINGLE |
       | mktType   | MRES   |
       | winType   | WIN    |
-      | priceType | LIVE   |
