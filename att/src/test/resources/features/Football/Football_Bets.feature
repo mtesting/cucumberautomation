@@ -13,7 +13,6 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | SINGLE |
       | mktType   | MRES   |
-      | winType   | WIN    |
 
   @ps
   @F-BrTxBets
@@ -24,7 +23,6 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | DOUBLE |
       | mktType   | MRES   |
-      | winType   | WIN    |
 
   @Intralot
   @F-BrMirrorBetsSingle @F-BrMirrorBets
@@ -35,7 +33,6 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | SINGLE        |
       | mktType   | SOCCER:FT:AXB |
-      | winType   | WIN           |
 
   @Intralot
   @F-BrMirrorBetsDouble @F-BrMirrorBets
@@ -47,7 +44,6 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | DOUBLE        |
       | mktType   | SOCCER:FT:AXB |
-      | winType   | WIN           |
 
   @Intralot
   @F-BrMirrorBetsTrixie @F-BrMirrorBets
@@ -59,7 +55,6 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | TRIXIE        |
       | mktType   | SOCCER:FT:AXB |
-      | winType   | WIN           |
 
   @F-MyBetAtt
   Scenario: Football single bet placement
@@ -69,4 +64,3 @@ Feature: Football Bets Placement
     Then user successfully place bets
       | betType   | SINGLE |
       | mktType   | MRES   |
-      | winType   | WIN    |
