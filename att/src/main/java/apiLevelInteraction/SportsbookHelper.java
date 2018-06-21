@@ -50,6 +50,7 @@ public class SportsbookHelper extends ApiPostHelper {
 
     private Login login;
     private PsWalletHelper psWalletHelper;
+    private HttpPost postRequest;
 
     private final String customerPunterUrl = decoder.decodePunterUrl(Constants.CUSTOMER_IN_TEST);
 
@@ -70,7 +71,7 @@ public class SportsbookHelper extends ApiPostHelper {
         JSONObject response = null;
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/login");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/login");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("username", username));
@@ -79,9 +80,9 @@ public class SportsbookHelper extends ApiPostHelper {
             postParameters.add(new BasicNameValuePair("brandId", "2"));
             postParameters.add(new BasicNameValuePair("application", "web-sportsbook"));
             //request.addHeader("content-type", "application/json");
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            response = executeHttpPost(request);
+            response = executeHttpPost(postRequest);
             log.info("Post to login response=" + response.toString());
 
             login = mapper.readValue(response.getJSONObject("Login").toString(), Login.class);
@@ -100,7 +101,7 @@ public class SportsbookHelper extends ApiPostHelper {
     public void externalLogin(String username) throws LoginException, IOException {
         List<NameValuePair> postParameters;
 
-        HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/externalLogin");
+        postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/externalLogin");
 
         postParameters = new ArrayList<>();
         postParameters.add(new BasicNameValuePair("externalToken", Utils.randomAlphanumeric()));
@@ -110,9 +111,9 @@ public class SportsbookHelper extends ApiPostHelper {
         postParameters.add(new BasicNameValuePair("site", "1"));
         postParameters.add(new BasicNameValuePair("locale", "en-gb"));
         postParameters.add(new BasicNameValuePair("application", "web-sportsbook"));
-        request.setEntity(new UrlEncodedFormEntity(postParameters));
+        postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-        JSONObject responseBody = executeHttpPost(request);
+        JSONObject responseBody = executeHttpPost(postRequest);
         log.info("Post to externalLogin response=" + responseBody.toString());
 
         try {
@@ -136,7 +137,7 @@ public class SportsbookHelper extends ApiPostHelper {
         List<NameValuePair> postParameters;
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/cashoutBet");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/cashoutBet");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("sessionToken", login.getSessionToken()));
@@ -144,9 +145,9 @@ public class SportsbookHelper extends ApiPostHelper {
             postParameters.add(new BasicNameValuePair("selectionId", "304312741")); //TODO find out if is being validated by ats
             postParameters.add(new BasicNameValuePair("cashOutStake", cashOutStake.toString()));
             postParameters.add(new BasicNameValuePair("accountId", String.valueOf(login.getAccountId())));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("cashoutBet response=" + response.toString());
 
             String status = response.get("status").toString();
@@ -169,14 +170,14 @@ public class SportsbookHelper extends ApiPostHelper {
         CalculateCashoutResponse calculateCashoutResponse = null;
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/calculateCashout");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/calculateCashout");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("sessionToken", login.getSessionToken()));
             postParameters.add(new BasicNameValuePair("bets", generateCalculateCashoutRequest()));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("calculateCashout response=" + response.toString());
 
             calculateCashoutResponse = mapper.readValue(response.getJSONObject("CalculateCashoutResponse").toString(),
@@ -209,13 +210,13 @@ public class SportsbookHelper extends ApiPostHelper {
         Bets bets = null;
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getOpenBets");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getOpenBets");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("sessionToken", login.getSessionToken()));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.debug("getOpenBets response=" + response.toString());
 
             bets = mapper.readValue(response.getJSONObject("Bets").toString(), Bets.class);
@@ -249,14 +250,14 @@ public class SportsbookHelper extends ApiPostHelper {
         AccountBalance accountBalance = null;
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getBalance");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getBalance");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("sessionToken", login.getSessionToken()));
             //request.addHeader("content-type", "application/json");
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("Post to getBalance response=" + response.toString());
 
             accountBalance = mapper.readValue(response.getJSONObject("AccountBalance").toString(), AccountBalance.class);
@@ -336,8 +337,8 @@ public class SportsbookHelper extends ApiPostHelper {
         BetPlacementHelper betPlacementHelper = new BetPlacementHelper(selections, type, winType, priceType);
 
 
-        HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/placeBets");
-        addPokerstarsCookies(request);
+        postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/placeBets");
+        addPokerstarsCookies(postRequest);
 
         postParameters = new ArrayList<>();
         postParameters.add(new BasicNameValuePair("bets", betPlacementHelper.buildPlaceBetsRequest(login)));
@@ -347,9 +348,9 @@ public class SportsbookHelper extends ApiPostHelper {
         postParameters.add(new BasicNameValuePair("locale", "en-gb"));
 
         try{
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            response = executeHttpPost(request);
+            response = executeHttpPost(postRequest);
             log.info("placeBets response=" + response.toString());
 
             placeBetsResponse = mapper.readValue(response.getJSONObject("PlaceBetsResponse").toString(), PlaceBetsResponse.class);
@@ -394,7 +395,7 @@ public class SportsbookHelper extends ApiPostHelper {
         long toTime = ZonedDateTime.now().plusDays(1).toInstant().toEpochMilli();
 
         try {
-            HttpPost request = new HttpPost("https://trading-bob-uat.amelco.co.uk/sb-backoffice/v1/api/amendBets"); //customerPunterUrl
+            postRequest = new HttpPost("https://trading-bob-uat.amelco.co.uk/sb-backoffice/v1/api/amendBets"); //customerPunterUrl
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("useCacheHeaders", "true"));
@@ -404,9 +405,9 @@ public class SportsbookHelper extends ApiPostHelper {
                     "\"marketId\":%s}}}", betPriceType, toTime, deduction, fromTime, marketId)));
             postParameters.add(new BasicNameValuePair("siteId", "1"));
             postParameters.add(new BasicNameValuePair("locale", "en-im"));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("amendBets response=" + response.toString());
 
             betAmendmentResponse = mapper.readValue(response.getJSONObject("BetAmendmentResponse").toString(), BetAmendmentResponse.class);
@@ -428,14 +429,14 @@ public class SportsbookHelper extends ApiPostHelper {
         BetPlacementHelper betPlacementHelper = new BetPlacementHelper(selections, type, winType, priceType);
 
         try {
-            HttpPost request = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getMaxAllowedBetStake");
+            postRequest = new HttpPost(customerPunterUrl + "/sportsbook/v1/api/getMaxAllowedBetStake");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("bets", betPlacementHelper.buildPlaceBetsRequest(login)));
             postParameters.add(new BasicNameValuePair("sessionToken", login.getSessionToken()));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.debug("getMaxAllowedBetStake response=" + response.toString());
             maxAllowed =  Double.valueOf(response.get("Double").toString());
 
