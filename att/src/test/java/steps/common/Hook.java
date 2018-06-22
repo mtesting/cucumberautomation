@@ -2,6 +2,7 @@ package steps.common;
 
 import org.apache.log4j.Logger;
 
+import att.events.EventManager;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import other.PropertyReader;
@@ -30,11 +31,11 @@ public class Hook {
 
     private void setSportType(Scenario scenario){
         for(Object sport : scenario.getSourceTagNames().toArray()){
-            if (sport.toString().equalsIgnoreCase("@Football")
-                    || sport.toString().equalsIgnoreCase("@Tennis")
-                    || sport.toString().equalsIgnoreCase("@Badminton")
-                    || sport.toString().equalsIgnoreCase("@HR")){
-                System.setProperty("sport", sport.toString());
+            String sportType = sport.toString().substring(1);
+            for(EventManager.SportType object : EventManager.SportType.values()){
+                if (sportType.equalsIgnoreCase(object.value())){
+                    System.setProperty("sport", sportType);
+                }
             }
         }
     }

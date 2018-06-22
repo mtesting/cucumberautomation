@@ -1,5 +1,7 @@
 package att.events;
 
+import static att.events.EventManager.SportType.*;
+
 public class EventManager {
 
     private static EventManager instance;
@@ -17,17 +19,17 @@ public class EventManager {
     }
 
     private void decodeEventSport() throws RuntimeException {
-        switch (System.getProperty("sport")) {
-            case "@Football":
+        switch (valueOf(System.getProperty("sport"))) {
+            case FOOTBALL:
                 eventHelper = new FootballHelper();
                 break;
-            case "@Tennis":
+            case TENNIS:
                 eventHelper = new TennisHelper();
                 break;
-            case "@Badminton":
+            case BADMINTON:
                 eventHelper = new BadmintonHelper();
                 break;
-            case "@HR":
+            case HR:
                 eventHelper = new RaceHelper();
                 break;
             default:
@@ -37,6 +39,34 @@ public class EventManager {
 
     public EventHelperTemplate getEventHelper() {
         return eventHelper;
+    }
+
+    public enum SportType {
+
+        FOOTBALL("FOOTBALL"),
+        TENNIS("TENNIS"),
+        BADMINTON("BADMINTON"),
+        HR("HR");
+
+        private final String value;
+
+        SportType(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        public static SportType fromValue(String v) {
+            for (SportType c: values()) {
+                if (c.value.equals(v)) {
+                    return c;
+                }
+            }
+            throw new IllegalArgumentException(v);
+        }
+
     }
 
 }

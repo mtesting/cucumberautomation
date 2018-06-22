@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         features = "classpath:features"
         , glue = {"steps.common", "steps.mybet"}
-        , tags = {"@Login"}
+        , tags = {"@MyBet"}
         , monochrome = true
         , plugin = {"pretty", "html:target/html/", "json:target/reports.json"}
 )
@@ -21,7 +21,7 @@ public class TestStuff {
     public static void readAndSetProperties() {
         System.setProperty("driverType", "local");
         System.setProperty("browserName", "chrome");
-        //System.setProperty("headless", "true");
+        System.setProperty("headless", "true");
         //System.setProperty("platform", "Mac");
         System.setProperty("customer", "MYBET");
         System.setProperty("testingEnv", "DEMO");
