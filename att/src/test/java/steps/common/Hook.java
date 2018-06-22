@@ -34,7 +34,7 @@ public class Hook {
             String sportType = sport.toString().substring(1);
             for(EventManager.SportType object : EventManager.SportType.values()){
                 if (sportType.equalsIgnoreCase(object.value())){
-                    System.setProperty("sport", sportType);
+                    System.setProperty("sport", sportType.toUpperCase());
                 }
             }
         }
