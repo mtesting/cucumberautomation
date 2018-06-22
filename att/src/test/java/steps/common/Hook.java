@@ -17,7 +17,7 @@ public class Hook {
     public void readAndSetProperties(Scenario scenario) {
         log.info("Properties set for customer=" + System.getProperty("customer") + ", env=" + System.getProperty("testingEnv"));
         log.info("Executing scenario: " + scenario.getName() + ", tags=" + scenario.getSourceTagNames());
-        System.setProperty("sport", scenario.getSourceTagNames().toArray()[0].toString());
+        setSportType(scenario);
         PropertyReader reader = new PropertyReader();
         log.info("Loading properties file..");
         for (String key : reader.getProperties().stringPropertyNames()) {
@@ -26,6 +26,17 @@ public class Hook {
         }
         log.info("Properties file read");
         overwriteProperties();
+    }
+
+    private void setSportType(Scenario scenario){
+        for(Object sport : scenario.getSourceTagNames().toArray()){
+            if (sport.toString().equalsIgnoreCase("@Football")
+                    || sport.toString().equalsIgnoreCase("@Tennis")
+                    || sport.toString().equalsIgnoreCase("@Badminton")
+                    || sport.toString().equalsIgnoreCase("@HR")){
+                System.setProperty("sport", sport.toString());
+            }
+        }
     }
 
     /**
