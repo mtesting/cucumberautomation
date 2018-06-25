@@ -41,8 +41,7 @@ public abstract class ApiPostHelper {
      */
     protected JSONObject executeHttpPost(HttpPost request) {
         JSONObject responseBody = null;
-        httpClient = HttpClientBuilder.create().build();
-        responseHandler = new BasicResponseHandler();
+        setUpHttpClient();
 
         try {
             response = httpClient.execute(request);
@@ -64,9 +63,7 @@ public abstract class ApiPostHelper {
      */
     protected JSONObject executeHttpGet(HttpGet request) {
         JSONObject responseBody = null;
-        httpClient = HttpClientBuilder.create().build();
-        responseHandler = new BasicResponseHandler();
-
+        setUpHttpClient();
 
         try {
             response = httpClient.execute(request);
@@ -78,6 +75,11 @@ public abstract class ApiPostHelper {
         }
 
         return responseBody;
+    }
+
+    private void setUpHttpClient() {
+        httpClient = HttpClientBuilder.create().build();
+        responseHandler = new BasicResponseHandler();
     }
 
     private void assertResponseIsOk(HttpResponse response) {
