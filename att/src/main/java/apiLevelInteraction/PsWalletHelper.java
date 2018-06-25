@@ -1,5 +1,6 @@
 package apiLevelInteraction;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.log4j.Logger;
@@ -40,8 +41,8 @@ class PsWalletHelper extends ApiPostHelper {
         try {
             StringEntity entity = new StringEntity(psWallet.createSetBalanceDetailsReqParams(login, amount).toString());
             request.setEntity(entity);
-            request.setHeader("Accept", "application/json");
-            request.setHeader("Content-type", "application/json");
+            request.setHeader(HttpHeaders.ACCEPT, "application/json");
+            request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
             JSONObject response = executeHttpPost(request);
 
@@ -64,8 +65,8 @@ class PsWalletHelper extends ApiPostHelper {
         try {
             StringEntity entity = new StringEntity(psWallet.createGetUserDetailsReqParams(login).toString());
             request.setEntity(entity);
-            request.setHeader("Accept", "application/json");
-            request.setHeader("Content-type", "application/json");
+            request.setHeader(HttpHeaders.ACCEPT, "application/json");
+            request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
             JSONObject response = executeHttpPost(request);
             log.info("Post to getUserInfo response=" + response.toString());
