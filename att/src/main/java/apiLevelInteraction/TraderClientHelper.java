@@ -3,6 +3,7 @@ package apiLevelInteraction;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -112,8 +113,8 @@ public class TraderClientHelper extends ApiPostHelper {
     public void saveMatchParams(String eventId) throws JSONException {
         log.info("--STEP-- save match params for " + eventId);
         postRequest = new HttpPost(customerTradingUrl + "/ats-trader/api/match/params/save");
-        postRequest.setHeader("Accept", "application/json");
-        postRequest.setHeader("Content-type", "application/json");
+        postRequest.setHeader(HttpHeaders.ACCEPT, "application/json");
+        postRequest.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         postRequest.setHeader("trader-session-token", backofficeLogin.getSessionToken());
 
         LinkedHashMap<String, MatchParam> mpList = new LinkedHashMap<>();
@@ -222,7 +223,7 @@ public class TraderClientHelper extends ApiPostHelper {
                 + "/selections");
 
         HttpGet request = new HttpGet(builder.build());
-        request.addHeader("Accept", "application/json");
+        request.addHeader(HttpHeaders.ACCEPT, "application/json");
         request.addHeader("trader-session-token", backofficeLogin.getSessionToken());
 
         JSONObject response = executeHttpGet(request);

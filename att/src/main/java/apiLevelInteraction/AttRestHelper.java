@@ -1,5 +1,6 @@
 package apiLevelInteraction;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
@@ -28,7 +29,7 @@ public class AttRestHelper extends ApiPostHelper {
     public void prepareAbelsonMatches(List<Match> matches) throws JSONException {
         request = new HttpPost(envAttUrl + "/att/attrest/abelsonmatches/prepare");
 
-        request.addHeader("Content-Type", "application/json");
+        request.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
         request.setEntity(new StringEntity(JsonUtil.marshalJson(matches),  ContentType.APPLICATION_JSON));
 
@@ -39,7 +40,7 @@ public class AttRestHelper extends ApiPostHelper {
     public void updateAbelsonMatch(Match match) throws JSONException {
         request = new HttpPost(envAttUrl + "/att/attrest/abelsonmatches/update");
 
-        request.addHeader("Content-Type", "application/json");
+        request.addHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 
         request.setEntity(new StringEntity(JsonUtil.marshalJson(match),  ContentType.APPLICATION_JSON));
 
