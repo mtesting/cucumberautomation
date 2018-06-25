@@ -176,32 +176,15 @@ public class TraderClientHelper extends ApiPostHelper {
      */
     public void betAmendment(String deductionType, Integer deductionAmount, Long marketId) {
         //backofficeLogin();
-        List<NameValuePair> postParameters;
-        //BetAmendmentResponse betAmendmentResponse = null;
+        BetAmendmentRequest betAmendmentRequest = generateBetAmendmentRequest(deductionType, deductionAmount, marketId);
 
-        BetAmendmentRequest betAmendmentRequest = new BetAmendmentRequest();
-        AmendMarketResult amendMarketResult = new AmendMarketResult();
-        Deductions deductions = new Deductions();
-        List<Deduction> deductionsList = new ArrayList<>();
-        Deduction deduction = new Deduction();
+        postRequest = new HttpPost(customerTradingUrl + "/sb-backoffice/v1/api/amendBets");
 
-        deduction.setKind(DeductionType.fromValue(deductionType));
-        deduction.setToTime(ZonedDateTime.now().plusDays(1).toEpochSecond()); //(System.currentTimeMillis()+86400000)/1000);
-        deduction.setDeduction(deductionAmount);
-        deduction.setFromTime(ZonedDateTime.now().minusDays(1).toEpochSecond());//System.currentTimeMillis()/1000);
-
-        deductionsList.add(deduction);
-        deductions.setDeduction(deductionsList);
-        amendMarketResult.setDeductions(deductions);
-        amendMarketResult.setMarketId(marketId);
-        betAmendmentRequest.setAmendMarketResult(amendMarketResult);
+        List<NameValuePair> postParameters = new ArrayList<>();
+        postParameters.add(new BasicNameValuePair("amendment", JsonUtil.marshalJson(betAmendmentRequest)));
+        postParameters.add(new BasicNameValuePair("sessionToken", backofficeLogin.getSessionToken()));
 
         try {
-            postRequest = new HttpPost(customerTradingUrl + "/sb-backoffice/v1/api/amendBets");
-
-            postParameters = new ArrayList<>();
-            postParameters.add(new BasicNameValuePair("amendment", JsonUtil.marshalJson(betAmendmentRequest)));
-            postParameters.add(new BasicNameValuePair("sessionToken", backofficeLogin.getSessionToken()));
             postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
             JSONObject response = executeHttpPost(postRequest);
@@ -213,6 +196,27 @@ public class TraderClientHelper extends ApiPostHelper {
             log.error(ex);
         }
         //return betAmendmentResponse;
+    }
+
+    private BetAmendmentRequest generateBetAmendmentRequest(String deductionType, Integer deductionAmount, Long marketId){
+        BetAmendmentRequest betAmendmentRequest = new BetAmendmentRequest();
+        AmendMarketResult amendMarketResult = new AmendMarketResult();
+        Deductions deductions = new Deductions();
+        List<Deduction> deductionsList = new ArrayList<>();
+        Deduction deduction = new Deduction();
+
+        deduction.setKind(DeductionType.fromValue(deductionType));
+        deduction.setToTime(ZonedDateTime.now().plusDays(1).toEpochSecond());
+        deduction.setDeduction(deductionAmount);
+        deduction.setFromTime(ZonedDateTime.now().minusDays(1).toEpochSecond());
+
+        deductionsList.add(deduction);
+        deductions.setDeduction(deductionsList);
+        amendMarketResult.setDeductions(deductions);
+        amendMarketResult.setMarketId(marketId);
+        betAmendmentRequest.setAmendMarketResult(amendMarketResult);
+
+        return betAmendmentRequest;
     }
 
     /**
