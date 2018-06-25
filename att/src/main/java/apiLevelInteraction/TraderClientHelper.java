@@ -117,37 +117,7 @@ public class TraderClientHelper extends ApiPostHelper {
         postRequest.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         postRequest.setHeader("trader-session-token", backofficeLogin.getSessionToken());
 
-        LinkedHashMap<String, MatchParam> mpList = new LinkedHashMap<>();
-
-        MatchParam teamAPreMatchLine = new MatchParam();
-        teamAPreMatchLine.setMatchParameterType(MatchParamType.A);
-        teamAPreMatchLine.setGaussian(new Gaussian(0.67, 0.05));
-        teamAPreMatchLine.setMarketGroup(MarketGroup.NOT_SPECIFIED);
-        teamAPreMatchLine.setMinAllowedParamValue(0.45);
-        teamAPreMatchLine.setMaxAllowedParamValue(0.99);
-        teamAPreMatchLine.setDisplayAsPercentage(true);
-        teamAPreMatchLine.setDescription("Probability team A wins match");
-
-        mpList.put("teamAPreMatchLine", teamAPreMatchLine);
-
-        MatchParam teamBPreMatchLine = new MatchParam();
-        teamBPreMatchLine.setMatchParameterType(MatchParamType.B);
-        teamBPreMatchLine.setGaussian(new Gaussian(0.655, 0.05));
-        teamBPreMatchLine.setMarketGroup(MarketGroup.NOT_SPECIFIED);
-        teamBPreMatchLine.setMinAllowedParamValue(0.45);
-        teamBPreMatchLine.setMaxAllowedParamValue(0.99);
-        teamBPreMatchLine.setDisplayAsPercentage(true);
-        teamBPreMatchLine.setDescription("Probability team B wins match");
-
-        mpList.put("teamBPreMatchLine", teamBPreMatchLine);
-
-
-        GenericMatchParams genericMatchParams = new GenericMatchParams();
-        genericMatchParams.setEventId(Long.valueOf(eventId));
-        //genericMatchParams.setRequestId("CreateEvent_" + eventId);
-        //genericMatchParams.setRequestTime(0);
-        genericMatchParams.setOriginatingClassName("ats.algo.sport.tennis.TennisMatchParams");
-        genericMatchParams.setParamMap(mpList);
+        GenericMatchParams genericMatchParams = generateMatchParams(eventId);
 
         String json = JsonUtil.marshalJson(genericMatchParams);
         log.debug("Post to saveMatchParams \n" + json);
@@ -163,6 +133,38 @@ public class TraderClientHelper extends ApiPostHelper {
         } catch (IOException ex) {
             log.error(ex);
         }
+    }
+
+    private GenericMatchParams generateMatchParams(String eventId){
+        LinkedHashMap<String, MatchParam> mpList = new LinkedHashMap<>();
+
+        MatchParam teamAPreMatchLine = generateMatchParam(MatchParamType.A,"Probability team A wins match");
+        mpList.put("teamAPreMatchLine", teamAPreMatchLine);
+
+        MatchParam teamBPreMatchLine = generateMatchParam(MatchParamType.B,"Probability team B wins match");
+        mpList.put("teamBPreMatchLine", teamBPreMatchLine);
+
+        GenericMatchParams genericMatchParams = new GenericMatchParams();
+        genericMatchParams.setEventId(Long.valueOf(eventId));
+        //genericMatchParams.setRequestId("CreateEvent_" + eventId);
+        //genericMatchParams.setRequestTime(0);
+        genericMatchParams.setOriginatingClassName("ats.algo.sport.tennis.TennisMatchParams");
+        genericMatchParams.setParamMap(mpList);
+
+        return genericMatchParams;
+    }
+
+    private MatchParam generateMatchParam(MatchParamType matchParamType, String description){
+        MatchParam matchParam = new MatchParam();
+        matchParam.setMatchParameterType(matchParamType);
+        matchParam.setGaussian(new Gaussian(0.67, 0.05));
+        matchParam.setMarketGroup(MarketGroup.NOT_SPECIFIED);
+        matchParam.setMinAllowedParamValue(0.45);
+        matchParam.setMaxAllowedParamValue(0.99);
+        matchParam.setDisplayAsPercentage(true);
+        matchParam.setDescription(description);
+
+        return matchParam;
     }
 
     /**
