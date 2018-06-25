@@ -45,6 +45,7 @@ public class TraderClientHelper extends ApiPostHelper {
     private static final Logger log = Logger.getLogger(TraderClientHelper.class);
 
     private Login backofficeLogin;
+    private HttpPost postRequest;
 
     private final String customerTradingUrl = decoder.decodeTradingUrl(Constants.CUSTOMER_IN_TEST);
 
@@ -62,15 +63,15 @@ public class TraderClientHelper extends ApiPostHelper {
         List<NameValuePair> postParameters;
 
         try {
-            HttpPost request = new HttpPost(customerTradingUrl + "/trader-api/v1/api/internalLogin");
+            postRequest = new HttpPost(customerTradingUrl + "/trader-api/v1/api/internalLogin");
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("username", "test1"));
             postParameters.add(new BasicNameValuePair("password", "test1"));
             postParameters.add(new BasicNameValuePair("application", "sb-backoffice"));
             //request.addHeader("content-type", "application/json");
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("Post to login response=" + response.toString());
 
             backofficeLogin = mapper.readValue(response.getJSONObject("Login").toString(), Login.class);
@@ -90,12 +91,12 @@ public class TraderClientHelper extends ApiPostHelper {
      */
     public void setTierLevelViaAPI(String eventID, String tierLevel) {
         log.info("--STEP-- set event tier level");
-        HttpPost request = new HttpPost(customerTradingUrl + "/ats-trader/api/settings/save/BOOKMAKING/tierLevel/"
+        postRequest = new HttpPost(customerTradingUrl + "/ats-trader/api/settings/save/BOOKMAKING/tierLevel/"
                 + tierLevel + "/node/" + eventID);
 
-        request.addHeader("trader-session-token", backofficeLogin.getSessionToken());
+        postRequest.addHeader("trader-session-token", backofficeLogin.getSessionToken());
 
-        JSONObject response = executeHttpPost(request);
+        JSONObject response = executeHttpPost(postRequest);
         log.info("Post to tierLevel response=" + response.toString());
         try {
             Assert.assertEquals("Set tierLevel failed", "OK", response.get("status"));
@@ -110,10 +111,10 @@ public class TraderClientHelper extends ApiPostHelper {
      */
     public void saveMatchParams(String eventId) throws JSONException {
         log.info("--STEP-- save match params for " + eventId);
-        HttpPost request = new HttpPost(customerTradingUrl + "/ats-trader/api/match/params/save");
-        request.setHeader("Accept", "application/json");
-        request.setHeader("Content-type", "application/json");
-        request.setHeader("trader-session-token", backofficeLogin.getSessionToken());
+        postRequest = new HttpPost(customerTradingUrl + "/ats-trader/api/match/params/save");
+        postRequest.setHeader("Accept", "application/json");
+        postRequest.setHeader("Content-type", "application/json");
+        postRequest.setHeader("trader-session-token", backofficeLogin.getSessionToken());
 
         LinkedHashMap<String, MatchParam> mpList = new LinkedHashMap<>();
 
@@ -152,9 +153,9 @@ public class TraderClientHelper extends ApiPostHelper {
 
         try {
             StringEntity entity = new StringEntity(json);
-            request.setEntity(entity);
+            postRequest.setEntity(entity);
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("Match param response=" + response.toString());
 
             Assert.assertEquals("Save match params failed error="+response.get("error"), "OK", response.get("status"));
@@ -193,14 +194,14 @@ public class TraderClientHelper extends ApiPostHelper {
         betAmendmentRequest.setAmendMarketResult(amendMarketResult);
 
         try {
-            HttpPost request = new HttpPost(customerTradingUrl + "/sb-backoffice/v1/api/amendBets");
+            postRequest = new HttpPost(customerTradingUrl + "/sb-backoffice/v1/api/amendBets");
 
             postParameters = new ArrayList<>();
             postParameters.add(new BasicNameValuePair("amendment", JsonUtil.marshalJson(betAmendmentRequest)));
             postParameters.add(new BasicNameValuePair("sessionToken", backofficeLogin.getSessionToken()));
-            request.setEntity(new UrlEncodedFormEntity(postParameters));
+            postRequest.setEntity(new UrlEncodedFormEntity(postParameters));
 
-            JSONObject response = executeHttpPost(request);
+            JSONObject response = executeHttpPost(postRequest);
             log.info("amendBets response=" + response.toString());
 
             Assert.assertEquals("", response.get("status").toString(), "OK");
