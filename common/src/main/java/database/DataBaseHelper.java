@@ -166,7 +166,10 @@ public class DataBaseHelper {
     //TODO ideally use Market class from generated.ats.sportsbook.punter.dto (?)
     public ArrayList<Market> getMarketsFromDB(String eventId) throws SQLException {
         ArrayList<Market> marketslist = new ArrayList<>();
-        String qryMarkets = "SELECT id, name, state, bir, mrkt_type, settled, visible, ref1, sys_ref FROM MARKETS WHERE NODE_ID = ";
+        String qryMarkets = "" +
+                "SELECT id, name, state, bir, mrkt_type, settled, visible, ref1, sys_ref " +
+                "FROM MARKETS " +
+                "WHERE NODE_ID = ";
         connect();
         try {
             // Create a Statement class to execute the SQL statement
@@ -195,24 +198,23 @@ public class DataBaseHelper {
         return marketslist;
     }
 
-    private Set<Instrument> getInstrumentsFromDB(String markId) {
+    private Set<Instrument> getInstrumentsFromDB(String markId) throws SQLException {
         Set<Instrument> instruments = new HashSet<>();
-        String instrumentQry = "SELECT id, name, settled, result, selection_id, visible, ref1, place, sys_ref FROM INSTRUMENTS WHERE MARK_ID = ";
-        try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(instrumentQry + markId);
-            while (rs.next()) {
-                Instrument selection = new Instrument();
-                selection.setId(rs.getLong("id"));
-                selection.setName((rs.getString("name")));
-                selection.setResult((rs.getString("result")));
-                log.debug(selection.getName());
-                instruments.add(selection);
-            }
-            log.info("Instruments created for the marketId=" + markId + " from ATS DB");
-        } catch (SQLException e) {
-            log.error(e);
+        String instrumentQry = "" +
+                "SELECT id, name, settled, result, selection_id, visible, ref1, place, sys_ref " +
+                "FROM INSTRUMENTS " +
+                "WHERE MARK_ID = ";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(instrumentQry + markId);
+        while (rs.next()) {
+            Instrument selection = new Instrument();
+            selection.setId(rs.getLong("id"));
+            selection.setName((rs.getString("name")));
+            selection.setResult((rs.getString("result")));
+            log.debug(selection.getName());
+            instruments.add(selection);
         }
+        log.info("Instruments created for the marketId=" + markId + " from ATS DB");
         return instruments;
     }
 
