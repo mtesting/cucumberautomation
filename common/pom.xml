@@ -27,7 +27,7 @@
         <dependency>
             <groupId>ats.betting</groupId>
             <artifactId>model</artifactId>
-            <version>95</version>
+            <version>492</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
