@@ -62,7 +62,7 @@
                 </property>
             </activation>
             <properties>
-                <att.baseurl>http://iomstgampss01:8098</att.baseurl>
+                <att.baseurl>http://iomstgampss01:8099</att.baseurl>
             </properties>
         </profile>
         <profile>

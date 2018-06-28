@@ -44,7 +44,7 @@ import util.Utils;
 /**
  * Class designed to perform API level operations on the Sportsbook
  */
-public class SportsbookHelper extends ApiPostHelper {
+public class SportsbookHelper extends ApiHelper {
 
     private static final Logger log = Logger.getLogger(SportsbookHelper.class);
 

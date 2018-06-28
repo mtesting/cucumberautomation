@@ -41,7 +41,7 @@ import generated.ats.betsync.dto.Deductions;
 import generated.ats.sportsbook.punter.dto.Login;
 import other.Constants;
 
-public class TraderClientHelper extends ApiPostHelper {
+public class TraderClientHelper extends ApiHelper {
 
     private static final Logger log = Logger.getLogger(TraderClientHelper.class);
 

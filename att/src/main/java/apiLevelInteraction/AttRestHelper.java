@@ -15,7 +15,7 @@ import java.util.List;
 import ats.core.util.json.JsonUtil;
 import decoders.DecoderConfigException;
 
-public class AttRestHelper extends ApiPostHelper {
+public class AttRestHelper extends ApiHelper {
 
     private static final Logger log = Logger.getLogger(AttRestHelper.class);
 

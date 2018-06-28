@@ -21,16 +21,16 @@ import decoders.Decoder;
 import decoders.DecoderConfigException;
 import decoders.DecoderManager;
 
-public abstract class ApiPostHelper {
+public abstract class ApiHelper {
 
-    private static final Logger log = Logger.getLogger(ApiPostHelper.class);
+    private static final Logger log = Logger.getLogger(ApiHelper.class);
     protected final Decoder decoder = DecoderManager.getManager().getDecoder();
     protected ObjectMapper mapper;
     private HttpResponse response;
     private ResponseHandler<String> responseHandler;
     private HttpClient httpClient;
 
-    protected ApiPostHelper() throws DecoderConfigException {
+    protected ApiHelper() throws DecoderConfigException {
     }
 
     /**

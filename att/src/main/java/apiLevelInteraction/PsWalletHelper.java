@@ -16,7 +16,7 @@ import generated.ats.sportsbook.punter.dto.AccountBalance;
 import generated.ats.sportsbook.punter.dto.Login;
 import other.Constants;
 
-class PsWalletHelper extends ApiPostHelper {
+class PsWalletHelper extends ApiHelper {
 
     private static final Logger log = Logger.getLogger(PsWalletHelper.class);
     private String walletHost;
