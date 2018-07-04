@@ -25,9 +25,9 @@ class PsWalletHelper extends ApiHelper {
 
     PsWalletHelper() throws DecoderConfigException {
         psWallet = new PsWallet();
-        if (Constants.TESTING_ENV.equalsIgnoreCase("BENCHMARK")) {
+        if (Constants.TESTING_ENV.equalsIgnoreCase("PsNewBench")) {
             walletHost = "iombenampswal01";
-        } else if (Constants.TESTING_ENV.equalsIgnoreCase("STAGING")) {
+        } else if (Constants.TESTING_ENV.equalsIgnoreCase("PsStaging")) {
             walletHost = "iomstgampss01";
         }
     }
