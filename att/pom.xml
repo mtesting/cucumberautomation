@@ -135,7 +135,7 @@
                 </property>
             </activation>
             <properties>
-                <att.baseurl>https://ensamilatt01:9008</att.baseurl>
+                <att.baseurl>http://ensamilatt01:9007</att.baseurl>
             </properties>
         </profile>
     </profiles>
