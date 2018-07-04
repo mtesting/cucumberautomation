@@ -28,7 +28,7 @@ public class IntralotDecoder implements Decoder {
         switch (Constants.TESTING_ENV.toUpperCase()) {
             case "TEST1":
                 return Constants.INTRALOT_TEST1_URL;
-            case "AUTO":
+            case "INTRALOTATT":
                 return Constants.INTRALOT_AUTO_URL;
             default:
                 throw new DecoderConfigException("Missing config at decodePunterUrl()");
@@ -40,7 +40,7 @@ public class IntralotDecoder implements Decoder {
         switch (Constants.TESTING_ENV.toUpperCase()) {
             case "TEST1":
                 return Constants.INTRALOT_TEST1_TRADING_URL;
-            case "AUTO":
+            case "INTRALOTATT":
                 return Constants.INTRALOT_AUTO_TRADING_URL;
             default:
                 throw new DecoderConfigException("Missing config at decodeTradingUrl()");
@@ -50,7 +50,7 @@ public class IntralotDecoder implements Decoder {
     @Override
     public String decodeNatsUrl(String customer) throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "AUTO":
+            case "INTRALOTATT":
                 return Constants.INTRALOT_AUTO_NATS_URL;
             default:
                 throw new DecoderConfigException("Missing config at decodeNatsUrl()");
@@ -60,7 +60,7 @@ public class IntralotDecoder implements Decoder {
     @Override
     public String decodeCustomerDb(String customer) throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "AUTO":
+            case "INTRALOTATT":
                 return Constants.INTRALOT_AUTO_DB_URL;
             case "TEST1":
                 return Constants.INTRALOT_TEST1_DB_URL;
@@ -77,7 +77,7 @@ public class IntralotDecoder implements Decoder {
     @Override
     public String decodeCustomerDbPassword () throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "AUTO":
+            case "INTRALOTATT":
                 return "B32h3$2215%234d!2234mwvd";
             case "TEST1":
                 return null;
