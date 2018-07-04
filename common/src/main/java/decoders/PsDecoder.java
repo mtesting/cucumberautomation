@@ -29,9 +29,9 @@ public class PsDecoder implements Decoder {
     @Override
     public String decodePunterUrl(String customer) throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "PsNewBench":
+            case "PSNEWBENCH":
                 return Constants.POKERSTARS_BENCHMARK_PUNTER_URL;
-            case "PsStaging":
+            case "PSSTAGING":
                 return Constants.POKERSTARS_STAGING_PUNTER_URL;
             case "UAT":
                 return Constants.POKERSTARS_UAT_PUNTER_URL;
@@ -45,9 +45,9 @@ public class PsDecoder implements Decoder {
     @Override
     public String decodeTradingUrl(String customer) throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "PsNewBench":
+            case "PSNEWBENCH":
                 return Constants.POKERSTARS_BENCHMARK_TRADING_URL;
-            case "PsStaging":
+            case "PSSTAGING":
                 return Constants.POKERSTARS_STAGING_TRADING_URL;
             default:
                 throw new DecoderConfigException("Missing config at decodeTradingUrl()");
@@ -57,9 +57,9 @@ public class PsDecoder implements Decoder {
     @Override
     public String decodeCustomerDb(String customer) throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "PsNewBench":
+            case "PSNEWBENCH":
                 return Constants.POKERSTARS_BENCHMARK_DB_URL;
-            case "PsStaging":
+            case "PSSTAGING":
                 return Constants.POKERSTARS_STAGING_DB_URL;
             case "UAT":
                 return Constants.POKERSTARS_DB_URL;
@@ -73,9 +73,9 @@ public class PsDecoder implements Decoder {
     @Override
     public String decodeATTURL() throws DecoderConfigException {
         switch (Constants.TESTING_ENV.toUpperCase()) {
-            case "PsNewBench":
+            case "PSNEWBENCH":
                 return Constants.POKERSTARS_BENCHMARK_ATT;
-            case "PsStaging":
+            case "PSSTAGING":
                 return Constants.POKERSTARS_STAGING_ATT;
             default:
                 throw new DecoderConfigException("Missing config at decodeATTURL() for env=" + Constants.TESTING_ENV);

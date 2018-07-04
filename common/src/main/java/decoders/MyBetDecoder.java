@@ -48,7 +48,7 @@ public class MyBetDecoder implements Decoder {
                     case "MYBET_BACKOFFICE":
                         return Constants.MYBET_DEMO_BACKOFFICE_URL;
                 }
-            case "MyBetAuto":
+            case "MYBETAUTO":
                 switch (customer.toUpperCase()) {
                     default:
                         return Constants.MYBET_AUTO_PUNTER_URL;
@@ -80,7 +80,7 @@ public class MyBetDecoder implements Decoder {
                     case "MYBET_BETS_DB":
                         return Constants.MYBET_DEMO_DB_BETCATCH_URL;
                 }
-            case "MyBetAuto":
+            case "MYBETAUTO":
                 switch (customer.toUpperCase()) {
                     case "MyBetAuto":
                         return Constants.MYBET_AUTO_DB_SPORTSBOOK_URL;
