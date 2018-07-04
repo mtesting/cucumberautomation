@@ -6,7 +6,7 @@ Feature: Football possible incidents
 
   @F-RbTxPossible
   Scenario: Football possible RedCard and possible Penalty
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | RUNNINGBALL |
       | Pricing   | TIPEX       |
     When the event runs the incidents from "FtbPossible.csv"

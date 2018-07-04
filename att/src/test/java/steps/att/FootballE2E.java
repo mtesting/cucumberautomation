@@ -123,11 +123,11 @@ public class FootballE2E extends EventSteps {
         eventHelper.assertEventIsCreated();
     }
 
-    @When("^\"([^\"]*)\" football event set as authorized, displayed and in-play$")
+    @When("^(\\d+) football event set as authorized, displayed and in-play$")
     public void footballEventSetAsAuthorizedDisplayedAndInPlay(int numberOfEvents, Map<String, String> data) throws Throwable {
         EventDefinition.Markets markets = null;
         if (data.size() >= 3) {
-             markets = MarketsHelper.prepareBetradarMirrorMarkets(Constants.BETRADAR_MIRROR_INPUT, data.get("excelSheet"));
+            markets = MarketsHelper.prepareBetradarMirrorMarkets(Constants.BETRADAR_MIRROR_INPUT, data.get("excelSheet"));
         }
         eventHelper.createEvent(decoder.getCompetitionId("football"), data.get("Incidents"), numberOfEvents,
                 numberOfEvents, data.get("Pricing"), "currenttime", markets);

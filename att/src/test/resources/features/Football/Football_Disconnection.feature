@@ -8,7 +8,7 @@ Feature: Football feed disconnection
   @betfair
   @F-BrDisconnection
   Scenario: Football E2E with feed disconnection
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"
@@ -19,7 +19,7 @@ Feature: Football feed disconnection
   @betfair
   @F-BrPartialDisconnection
   Scenario: Football E2E with partial disconnection
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"
@@ -29,7 +29,7 @@ Feature: Football feed disconnection
 
   @F-BrStopAliveReply
   Scenario: Football E2E with heartbeat stop
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"

@@ -7,7 +7,7 @@ Feature: Football Bets Placement
   @ps
   @F-BrTxBets
   Scenario: Football single bet placement
-    When "1" football event set as authorized, displayed and in-play
+    When 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     Then user successfully place bets
@@ -17,7 +17,7 @@ Feature: Football Bets Placement
   @ps
   @F-BrTxBets
   Scenario: Football double bet placement
-    When "2" football event set as authorized, displayed and in-play
+    When 2 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     Then user successfully place bets
@@ -37,7 +37,7 @@ Feature: Football Bets Placement
   @Intralot
   @F-BrMirrorBetsDouble @F-BrMirrorBets
   Scenario: Football Double bet placement
-    When "2" football event set as authorized, displayed and in-play
+    When 2 football event set as authorized, displayed and in-play
       | Incidents  | BETRADAR_MIRROR |
       | Pricing    | BETRADAR_MIRROR |
       | excelSheet | FtbMarketData   |
@@ -48,7 +48,7 @@ Feature: Football Bets Placement
   @Intralot
   @F-BrMirrorBetsTrixie @F-BrMirrorBets
   Scenario: Football Trixie bet placement
-    When "3" football event set as authorized, displayed and in-play
+    When 3 football event set as authorized, displayed and in-play
       | Incidents  | BETRADAR_MIRROR |
       | Pricing    | BETRADAR_MIRROR |
       | excelSheet | FtbMarketData   |

@@ -8,7 +8,7 @@ Feature: Bets cash-out
 
   @bets-cashout-single
   Scenario: Football Single bet cashout
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When user successfully place bets for football
@@ -21,7 +21,7 @@ Feature: Bets cash-out
 
   @bets-cashout-multiple
   Scenario: Football Multiple bet cashout
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When user successfully place bets for football

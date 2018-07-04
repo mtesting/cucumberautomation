@@ -7,7 +7,7 @@ Feature: Football events E2E
   @ps @betfair
   @F-BrE2E
   Scenario: Football event E2E with pricing
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"
@@ -17,7 +17,7 @@ Feature: Football events E2E
   #@Intralot
   @F-BrMirrorE2E
   Scenario: Football event E2E with pricing
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents  | BETRADAR_MIRROR |
       | Pricing    | BETRADAR_MIRROR |
       | excelSheet | FtbMarketData   |
@@ -28,7 +28,7 @@ Feature: Football events E2E
   @coral
   @F-BrE2E-Openbet
   Scenario: Football event E2E with pricing
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"
@@ -39,7 +39,7 @@ Feature: Football events E2E
   @ps
   @F-RbE2E
   Scenario: Football event E2E with pricing
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | RUNNINGBALL |
       | Pricing   | TIPEX       |
     When the event runs the incidents from "FtbIncidentsFirstHalfStartOnly.csv"

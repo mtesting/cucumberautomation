@@ -3,7 +3,7 @@ Feature: Football Cancellations
 
   @F-BrCoverageCancel
   Scenario: Football E2E with coverage cancel
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbIncidentsFirstHalfCoverageCancel.csv"
@@ -14,7 +14,7 @@ Feature: Football Cancellations
   @ps
   @F-RbGoalCancel
   Scenario: Football goal cancelled
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | RUNNINGBALL |
       | Pricing   | TIPEX       |
     When the event runs the incidents from "FtbGoalCancel.csv"

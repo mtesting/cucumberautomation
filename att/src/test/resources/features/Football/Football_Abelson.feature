@@ -3,7 +3,7 @@ Feature: Football Abelson markets
 
   @F-Abelson
   Scenario: Football event E2E with pricing
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     And Abelson Goal Scorer markets added

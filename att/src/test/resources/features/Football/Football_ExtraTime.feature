@@ -8,7 +8,7 @@ Feature: Football events Extra-Time
   @ps
   @F-BrExtraTime
   Scenario: Football extra time with Betradar
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbExtraTimeIncidents1.csv"
@@ -20,7 +20,7 @@ Feature: Football events Extra-Time
   @ps
   @F-RBExtraTime
   Scenario: Football extra time with Runningball
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | RUNNINGBALL |
       | Pricing   | TIPEX       |
     When the event runs the incidents from "FtbExtraTimeIncidents1.csv"
@@ -42,7 +42,7 @@ Feature: Football events Extra-Time
   @ps
   @F-BrExtraTimePenalty
   Scenario: Football extra time penalty with Betradar
-    Given "1" football event set as authorized, displayed and in-play
+    Given 1 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     When the event runs the incidents from "FtbExtraTimeIncidents1.csv"
