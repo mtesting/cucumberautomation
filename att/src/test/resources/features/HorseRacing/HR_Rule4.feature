@@ -6,7 +6,7 @@ Feature: HR Rule4
 
   @Test
   Scenario Outline: Rule 4 with SINGLE bets <bet_type> bet with resulting <outcome>
-    Given user is able to create "1" HR event
+    Given user is able to create 1 HR event
     And user place "SINGLE" bets on the market "WEW" for HR
       | betType   | <bet_type> |
       | outcome   | <outcome>  |

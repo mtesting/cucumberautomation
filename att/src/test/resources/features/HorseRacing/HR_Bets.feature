@@ -7,7 +7,7 @@ Feature: HR Bets Placement
 
   @HR-betsSP
   Scenario: Horse racing SP bets placement
-    Given user is able to create "1" HR event
+    Given user is able to create 1 HR event
     And user successfully place random bets for HR
       | betType   | SINGLE |
       | mktType   | WEW    |
@@ -19,7 +19,7 @@ Feature: HR Bets Placement
 
   @HR-betsLP
   Scenario: Horse racing LP bets placement
-    Given user is able to create "1" HR event
+    Given user is able to create 1 HR event
     And the LP flag is set to true
     And user successfully place random bets for HR
       | betType   | SINGLE |

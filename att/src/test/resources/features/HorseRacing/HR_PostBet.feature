@@ -5,7 +5,7 @@ Feature: Post bet placement
 
   Background:
     Given the User is logged onto the customer Sportsbook
-    And user is able to create "1" HR event
+    And user is able to create 1 HR event
 
   @HRpostbetSP
   Scenario Outline: Selection odds change in SP

@@ -15,6 +15,7 @@ import apiLevelInteraction.SportsbookHelper;
 import apiLevelInteraction.TraderClientHelper;
 import ats.betting.trading.att.ws.scenario.dto.RaceStage;
 import att.events.RaceHelper;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -282,7 +283,7 @@ public class HorseRace extends EventSteps {
         }
     }
 
-    @Given("^user is able to create \"([^\"]*)\" HR event$")
+    @Given("^user is able to create (\\d+) HR event$")
     public void userIsAbleToCreateHREvent(int numberOfEvents) throws Throwable {
         RaceHelper racingEvent;
         for (int x = 0; x < numberOfEvents; x++) {
@@ -349,5 +350,6 @@ public class HorseRace extends EventSteps {
         );
         customer.setBalance(sportsbook.getWalletBalance());
     }
+
 }
 

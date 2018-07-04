@@ -7,7 +7,7 @@ Feature: HR Bets settlement
 
   @HR-betsSingleResulting
   Scenario Outline: HR Single <bet_type> bet with resulting <outcome>
-    Given user is able to create "1" HR event
+    Given user is able to create 1 HR event
     And user place "SINGLE" bets on the market "WEW" for HR
       | betType   | <bet_type> |
       | outcome   | <outcome>  |
@@ -34,7 +34,7 @@ Feature: HR Bets settlement
 
   @HR-betsDoubleResulting
   Scenario Outline: HR Multiple <bet_type> bets with resulting <outcome>
-    Given user is able to create "2" HR event
+    Given user is able to create 2 HR event
     And user place "DOUBLE" bets on the market "WEW" for HR
       | betType   | <bet_type> |
       | outcome   | <outcome>  |
