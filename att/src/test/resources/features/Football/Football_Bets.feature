@@ -16,7 +16,7 @@ Feature: Football Bets Placement
 
   @ps
   @F-BrTxBets
-  Scenario: Football single bet placement
+  Scenario: Football double bet placement
     When "2" football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
