@@ -181,18 +181,18 @@ public class IncidentsHelper {
 
                 try {
                     incident.setType(IncidentType.fromValue(row.getCell(TYPE).getStringCellValue()));
-                    switch ((row.getCell(TYPE).getStringCellValue())) {
-                        case "abandon_match":
+                    switch (incident.getType()) {
+                        case ABANDON_MATCH:
                             incident.setName(AbandonName.WALKOVER);
                             break;
-                        case "tennis_match_state_changed":
-                        case "pregame":
+                        case TENNIS_MATCH_STATE_CHANGED:
+                        case PREGAME:
                             incident.setMatchState(TennisMatchState.IN_PROGRESS);
                             break;
-                        case "tennis_serves_first":
+                        case TENNIS_SERVES_FIRST:
                             timeServersFirst = DateUtil.getCurrentTimeInFormat("HH:mm:ss", Calendar.SECOND, 1);
                             break;
-                        case "tennis_incident_update":
+                        case TENNIS_INCIDENT_UPDATE:
                             incident.setInfo("First serve event (originally entered at " + timeServersFirst + " UTC) has been updated.");
                             break;
                     }
