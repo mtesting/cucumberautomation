@@ -13,7 +13,7 @@ Feature: Replay scenarios from dataset
 
   @F-BrLoadtest
   Scenario: Load test an environment by creating n number of football events
-    Given "5" football event set as authorized, displayed and in-play
+    Given 5 football event set as authorized, displayed and in-play
       | Incidents | BETRADAR |
       | Pricing   | TIPEX    |
     Then incidents from dataset will be replayed for the event
@@ -30,15 +30,15 @@ Feature: Replay scenarios from dataset
   Scenario: Tennis event replay E2E with pricing
     Given a "tennis" event set as authorized, displayed, in-play
       | DataSet   | BR_TEN_3 |
-      | Incidents | BETRADAR  |
-      | Pricing   |           |
+      | Incidents | BETRADAR |
+      | Pricing   |          |
     Then incidents from dataset will be replayed for the event
 
   @T-BrreplayRandomDataset
   Scenario: Tennis event replay E2E with pricing
     Given a "tennis" event set as authorized, displayed, in-play
-      | Incidents | BETRADAR  |
-      | Pricing   |           |
+      | Incidents | BETRADAR |
+      | Pricing   |          |
     Then incidents from dataset will be replayed for the event
 
   @T-ImgReplay
