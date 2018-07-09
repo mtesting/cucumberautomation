@@ -27,7 +27,7 @@ public interface EventHelperTemplate {
      * @throws ScenarioDefinitionException wrong scenario definition sent to ATT
      */
     void createEvent(long competitionId, String incidentsFeedProvider, int matchesTotal, int matchesInplay,
-            String pricingFeedProvider, String startDateTime, EventDefinition.Markets markets) throws ScenarioDefinitionException;
+            String pricingFeedProvider, String startDateTime, EventDefinition.Markets markets) throws Throwable;
 
     /**
      * Creates events for re-play mode calling to ATT scheduleScenario
@@ -41,7 +41,7 @@ public interface EventHelperTemplate {
      * @throws ScenarioDefinitionException wrong scenario definition sent to ATT
      */
     void createEventSchedule(long competitionId, String incidentsFeedProvider, int matchesTotal, int matchesInplay,
-            String pricingFeedProvider, String dataset, EventDefinition.Markets markets, String eventStartDateTime) throws ScenarioDefinitionException;
+            String pricingFeedProvider, String dataset, EventDefinition.Markets markets, String eventStartDateTime) throws Throwable;
 
     void assertEventIsCreated();
 

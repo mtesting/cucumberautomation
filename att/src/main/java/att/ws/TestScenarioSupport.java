@@ -9,10 +9,7 @@ import org.apache.log4j.Logger;
 
 import uk.co.amelco.testscenario.abelson.Match;
 
-import java.text.ParseException;
 import java.util.List;
-
-import javax.xml.datatype.DatatypeConfigurationException;
 
 import ats.betting.trading.att.ws.scenario.ScenarioDefinitionException;
 import ats.betting.trading.att.ws.scenario.SendIncidentException;
@@ -30,7 +27,6 @@ import ats.betting.trading.att.ws.scenario.dto.RaceMeetingDefinition_0020;
 import ats.betting.trading.att.ws.scenario.dto.RaceUpdate;
 import ats.betting.trading.att.ws.scenario.dto.ScenarioDefinition;
 import ats.betting.trading.att.ws.scenario.dto.ScenarioStatus;
-import att.ScenarioHelper;
 
 public class TestScenarioSupport {
 
@@ -59,15 +55,7 @@ public class TestScenarioSupport {
     /**
      * sends a request to create an event on-demand and returns the tracking id
      */
-    public String getTrackingIdforPrepareScenario(long competitionId, String incidentsFeedProvider,
-                                                  int matchesTotal, int matchesInplay, String pricingFeedProvider, String startDateTime, String dataset,
-                                                  EventDefinition.Markets markets) throws DatatypeConfigurationException, ScenarioDefinitionException,
-            ParseException {
-
-        ScenarioHelper scenarioHelper = new ScenarioHelper(competitionId, incidentsFeedProvider,
-                matchesTotal, matchesInplay, pricingFeedProvider, startDateTime, dataset, markets);
-        ScenarioDefinition scenarioDefinition = scenarioHelper.prepareScenarioDefinition();
-
+    public String getTrackingIdForPrepareScenario(ScenarioDefinition scenarioDefinition) throws ScenarioDefinitionException {
         try{
             return service.prepareScenario(scenarioDefinition);
         }
@@ -75,22 +63,12 @@ public class TestScenarioSupport {
             log.error(e.getFaultInfo().getDetails().getDetail().get(0).getMessage(), e);
             throw e;
         }
-
     }
 
     /**
      * Creates an event on replay mode
      */
-    public String getTrackingIdforScheduleScenario(long competitionId, String incidentsFeedProvider, int matchesTotal,
-                                                   int matchesInplay, String pricingFeedProvider, String startDateTime, String dataset, EventDefinition.Markets markets)
-            throws DatatypeConfigurationException, ScenarioDefinitionException, ParseException {
-
-        log.info("scheduleScenario with dataset=" + dataset);
-
-        ScenarioHelper scenarioHelper = new ScenarioHelper(competitionId, incidentsFeedProvider,
-                matchesTotal, matchesInplay, pricingFeedProvider, startDateTime, dataset, markets);
-        ScenarioDefinition scenarioDefinition = scenarioHelper.prepareScenarioDefinition();
-
+    public String getTrackingIdForScheduleScenario(ScenarioDefinition scenarioDefinition) throws ScenarioDefinitionException {
         try{
             return service.scheduleScenario(scenarioDefinition);
         }

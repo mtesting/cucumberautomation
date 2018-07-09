@@ -5,11 +5,8 @@ import org.junit.Assert;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.datatype.DatatypeConfigurationException;
 
 import ats.betting.model.domain.Market;
 import ats.betting.trading.att.ws.scenario.ScenarioDefinitionException;
@@ -22,6 +19,7 @@ import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Participant;
 import ats.betting.trading.att.ws.scenario.dto.PeriodScore;
 import ats.betting.trading.att.ws.scenario.dto.ScenarioStatus;
+import att.ScenarioHelper;
 import att.ws.TestScenarioSupport;
 import database.DataBaseHelper;
 import decoders.DecoderConfigException;
@@ -207,42 +205,37 @@ public abstract class EventHelper implements EventHelperTemplate {
 
     @Override
     public void createEvent(long competitionId, String incidentsFeedProvider, int matchesTotal, int matchesInplay,
-                            String pricingFeedProvider, String startDateTime, EventDefinition.Markets markets) throws ScenarioDefinitionException {
+                            String pricingFeedProvider, String startDateTime, EventDefinition.Markets markets) throws Throwable {
         log.info("-- STEP -- to create an event");
         setEvent(new Event());
-        try {
 
-            trackingId = testScenarioSupport.getTrackingIdforPrepareScenario(competitionId, incidentsFeedProvider,
-                    matchesTotal, matchesInplay, pricingFeedProvider, startDateTime, "", markets);
+        ScenarioHelper scenarioHelper = new ScenarioHelper(competitionId, incidentsFeedProvider,
+                matchesTotal, matchesInplay, pricingFeedProvider, startDateTime, "", markets);
+        trackingId = testScenarioSupport.getTrackingIdForPrepareScenario(scenarioHelper.prepareScenarioDefinition());
 
-            log.info("Tracking id :::" + trackingId);
+        log.info("Tracking id :::" + trackingId);
 
-            synchronized (this) {
-                Utils.waitSeconds(20);
-            }
-
-        } catch (DatatypeConfigurationException | ParseException e) {
-            log.error(e);
+        synchronized (this) {
+            Utils.waitSeconds(20);
         }
     }
 
     public void createEventSchedule(long competitionId, String incidentsFeedProvider, int matchesTotal, int matchesInplay,
-                                    String pricingFeedProvider, String dataset, EventDefinition.Markets markets, String eventStartDateTime) throws ScenarioDefinitionException {
+                                    String pricingFeedProvider, String dataset, EventDefinition.Markets markets, String startDateTime)
+            throws Throwable {
         log.info("-- STEP -- to create an schedule event");
         setEvent(new Event());
-        try {
 
-            trackingId = testScenarioSupport.getTrackingIdforScheduleScenario(competitionId, incidentsFeedProvider,
-                    matchesTotal, matchesInplay, pricingFeedProvider, eventStartDateTime, dataset, markets);
+        log.info("scheduleScenario with dataset=" + dataset);
 
-            log.info("Tracking id :::" + trackingId);
+        ScenarioHelper scenarioHelper = new ScenarioHelper(competitionId, incidentsFeedProvider,
+                matchesTotal, matchesInplay, pricingFeedProvider, startDateTime, dataset, markets);
+        trackingId = testScenarioSupport.getTrackingIdForScheduleScenario(scenarioHelper.prepareScenarioDefinition());
 
-            synchronized (this) {
-                Utils.waitSeconds(20);
-            }
+        log.info("Tracking id :::" + trackingId);
 
-        } catch (DatatypeConfigurationException | ParseException e) {
-            log.error(e);
+        synchronized (this) {
+            Utils.waitSeconds(20);
         }
     }
 
