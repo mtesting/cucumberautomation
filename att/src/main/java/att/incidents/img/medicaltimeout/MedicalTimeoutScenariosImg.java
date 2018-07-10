@@ -7,7 +7,7 @@ import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
 
-public class MedicalTimeoutScenariosImg implements att.incidents.inter.MedicalTimeoutScenarios {
+public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.MedicalTimeoutScenarios {
 
     private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;

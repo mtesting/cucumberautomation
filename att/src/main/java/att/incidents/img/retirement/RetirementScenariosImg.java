@@ -7,7 +7,7 @@ import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
 
-public class RetirementScenariosImg implements att.incidents.inter.RetirementScenarios {
+public class RetirementScenariosImg implements att.incidents.interfaces.RetirementScenarios {
 
     private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;

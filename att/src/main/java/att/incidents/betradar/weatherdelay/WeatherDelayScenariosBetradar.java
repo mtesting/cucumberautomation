@@ -6,7 +6,7 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
-import att.incidents.inter.WeatherDelayScenarios;
+import att.incidents.interfaces.WeatherDelayScenarios;
 
 public class WeatherDelayScenariosBetradar implements WeatherDelayScenarios {
 

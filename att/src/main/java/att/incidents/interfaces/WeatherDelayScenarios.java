@@ -1,4 +1,4 @@
-package att.incidents.inter;
+package att.incidents.interfaces;
 
 import java.util.List;
 
