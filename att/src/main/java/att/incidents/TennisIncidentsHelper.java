@@ -181,7 +181,7 @@ public class TennisIncidentsHelper {
         return incident;
     }
 
-    public Incident getRainStopPlayIncidentIMG(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+    public Incident getRainStopPlayIncident(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
         Tennis incident = new Tennis();
         incident.setType(IncidentType.RAIN_STOPPED_PLAY);
         incident.setSide(Side.HOME);
@@ -200,22 +200,6 @@ public class TennisIncidentsHelper {
     public Incident getRainReStartPlayIncidentIMG(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
         Tennis incident = new Tennis();
         //incident.setType(IncidentType.BETSTART_INPLAY);
-        incident.setSide(Side.HOME);
-        incident.setMatchTime(matchTime);
-        incident.setScore(score);
-        incident.setSet(setNumber);
-        incident.setGame(gameNumber);
-        incident.setHistoryA(historySet1);
-        incident.setHistoryB(historySet2);
-        incident.setServer(serverSide);
-        incident.setIncidentDelay(20);
-        incident.setWinningPoint(false);
-        return incident;
-    }
-
-    public Incident getRainStopPlayIncidentBetRadar(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
-        Tennis incident = new Tennis();
-        incident.setType(IncidentType.RAIN_STOPPED_PLAY);
         incident.setSide(Side.HOME);
         incident.setMatchTime(matchTime);
         incident.setScore(score);

@@ -17,7 +17,7 @@ public class WeatherDelayScenariosBetradar implements WeatherDelayScenarios {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentBetRadar("0:30", "30-0",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0",
                 1, 1));
         return incidents;
@@ -27,7 +27,7 @@ public class WeatherDelayScenariosBetradar implements WeatherDelayScenarios {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentBetRadar("0:30", "30-0",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0",
                 1, 1));
 
@@ -42,7 +42,7 @@ public class WeatherDelayScenariosBetradar implements WeatherDelayScenarios {
 
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentBetRadar("0:30", "30-0",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0",
                 1, 1));
 

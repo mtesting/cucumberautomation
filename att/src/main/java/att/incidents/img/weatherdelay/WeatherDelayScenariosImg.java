@@ -17,7 +17,7 @@ public class WeatherDelayScenariosImg implements WeatherDelayScenarios {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentIMG("0:30", "30-15",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-15",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
 
         return incidents;
@@ -28,7 +28,7 @@ public class WeatherDelayScenariosImg implements WeatherDelayScenarios {
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
         // Add a RainDelay
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentIMG("0:30", "30-15",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-15",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
 
         incidents.add(tennisIncidentsHelper.getUndoIncidentIMG("0:35", "15-15", Side.HOME, Side.HOME,
@@ -41,7 +41,7 @@ public class WeatherDelayScenariosImg implements WeatherDelayScenarios {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
-        incidents.add(tennisIncidentsHelper.getRainStopPlayIncidentIMG("0:30", "30-15",
+        incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-15",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
 
         incidents.add(tennisIncidentsHelper.getRainReStartPlayIncidentIMG("1:30", "30-15",
