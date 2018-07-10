@@ -1,6 +1,7 @@
 package decoders;
 
 import other.Constants;
+import util.StringEncrypt;
 
 public class BetfairDecoder implements Decoder {
 
@@ -62,7 +63,12 @@ public class BetfairDecoder implements Decoder {
 
     @Override
     public String decodeCustomerDbPassword () throws DecoderConfigException {
-        return "";
+        switch (Constants.TESTING_ENV.toUpperCase()) {
+            case "PPBF":
+                return StringEncrypt.decryptXOR(Constants.BF_PPBF_DB_PASSWORD);
+            default:
+                throw new DecoderConfigException("Missing config at decodeCustomerDbPassword() for env=" + Constants.TESTING_ENV);
+        }
     }
 
 }
