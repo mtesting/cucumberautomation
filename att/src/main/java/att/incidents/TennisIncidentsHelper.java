@@ -16,9 +16,6 @@ import util.DateUtil;
 
 public class TennisIncidentsHelper {
 
-    public static final String FEED_BETRADAR = "BETRADAR";
-    public static final String FEED_IMG = "IMG";
-
     private static final Logger log = Logger.getLogger(TennisIncidentsHelper.class);
 
     public List<Incident> getTestBetRadarIncidents() {
