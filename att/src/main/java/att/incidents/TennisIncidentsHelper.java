@@ -215,7 +215,39 @@ public class TennisIncidentsHelper {
 
     public Incident getRainStopPlayIncidentBetRadar(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
         Tennis incident = new Tennis();
+        incident.setType(IncidentType.RAIN_STOPPED_PLAY);
+        incident.setSide(Side.HOME);
+        incident.setMatchTime(matchTime);
+        incident.setScore(score);
+        incident.setSet(setNumber);
+        incident.setGame(gameNumber);
+        incident.setHistoryA(historySet1);
+        incident.setHistoryB(historySet2);
+        incident.setServer(serverSide);
+        incident.setIncidentDelay(20);
+        incident.setWinningPoint(false);
+        return incident;
+    }
+
+    public Incident getWeatherStopPlayIncidentBetRadar(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+        Tennis incident = new Tennis();
         incident.setType(IncidentType.TENNIS_WEATHER_STOPPED_PLAY);
+        incident.setSide(Side.HOME);
+        incident.setMatchTime(matchTime);
+        incident.setScore(score);
+        incident.setSet(setNumber);
+        incident.setGame(gameNumber);
+        incident.setHistoryA(historySet1);
+        incident.setHistoryB(historySet2);
+        incident.setServer(serverSide);
+        incident.setIncidentDelay(20);
+        incident.setWinningPoint(false);
+        return incident;
+    }
+
+    public Incident getHeatStopPlayIncident(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+        Tennis incident = new Tennis();
+        incident.setType(IncidentType.HEAT_DELAY);
         incident.setSide(Side.HOME);
         incident.setMatchTime(matchTime);
         incident.setScore(score);

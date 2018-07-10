@@ -1,6 +1,7 @@
 package att.incidents.img.weatherdelay;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
@@ -50,6 +51,17 @@ public class WeatherDelayScenariosImg implements WeatherDelayScenarios {
         incidents.add(tennisIncidentsHelper.getPointIncident("1:35", "40-15",
                 Side.HOME, Side.HOME, "0,0,0", "0,0,0",
                 1, 1));
+        return incidents;
+    }
+
+    @Override
+    public List<Incident> getHeatStopPlayIncidents() {
+        tennisIncidentsHelper = new TennisIncidentsHelper();
+        incidents = getMatchIncidents(tennisIncidentsHelper);
+
+        incidents.add(tennisIncidentsHelper.getHeatStopPlayIncident("0:30", "30-15",
+                Side.HOME, "0,0,0", "0,0,0", 1, 1));
+
         return incidents;
     }
 

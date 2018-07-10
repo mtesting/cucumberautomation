@@ -16,4 +16,10 @@ public interface WeatherDelayScenarios {
 
     List<Incident> getRainStopAndStartPlayIncidents();
 
+    default List<Incident> getWeatherStopPlayIncidents() {
+        throw new RuntimeException("Not supported for IMG");
+    }
+
+    List<Incident> getHeatStopPlayIncidents();
+
 }

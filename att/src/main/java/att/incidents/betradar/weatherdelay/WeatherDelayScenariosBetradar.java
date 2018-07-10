@@ -56,6 +56,26 @@ public class WeatherDelayScenariosBetradar implements WeatherDelayScenarios {
         return incidents;
     }
 
+    public List<Incident> getWeatherStopPlayIncidents() {
+        tennisIncidentsHelper = new TennisIncidentsHelper();
+        incidents = getMatchIncidents(tennisIncidentsHelper);
+
+        incidents.add(tennisIncidentsHelper.getWeatherStopPlayIncidentBetRadar("0:30", "30-0",
+                Side.HOME, "0,0,0", "0,0,0",
+                1, 1));
+        return incidents;
+    }
+
+    public List<Incident> getHeatStopPlayIncidents() {
+        tennisIncidentsHelper = new TennisIncidentsHelper();
+        incidents = getMatchIncidents(tennisIncidentsHelper);
+
+        incidents.add(tennisIncidentsHelper.getHeatStopPlayIncident("0:30", "30-0",
+                Side.HOME, "0,0,0", "0,0,0",
+                1, 1));
+        return incidents;
+    }
+
     private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "0:00:00";
         incidents = new ArrayList<>();
