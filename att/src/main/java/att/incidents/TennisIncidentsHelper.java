@@ -215,7 +215,7 @@ public class TennisIncidentsHelper {
 
     public Incident getRainStopPlayIncidentBetRadar(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
         Tennis incident = new Tennis();
-        //incident.setType(IncidentType.WEATHER_STOPPED_PLAY);
+        incident.setType(IncidentType.TENNIS_WEATHER_STOPPED_PLAY);
         incident.setSide(Side.HOME);
         incident.setMatchTime(matchTime);
         incident.setScore(score);
@@ -231,7 +231,7 @@ public class TennisIncidentsHelper {
 
     public Incident getRainReStartPlayIncidentBetRadar(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
         Tennis incident = new Tennis();
-        //incident.setType(IncidentType.BETSTART_INPLAY);
+        incident.setType(IncidentType.BETSTART_INPLAY);
         incident.setSide(Side.HOME);
         incident.setMatchTime(matchTime);
         incident.setScore(score);
