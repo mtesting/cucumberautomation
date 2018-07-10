@@ -6,10 +6,11 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
+import att.incidents.inter.WeatherDelayInterface;
 
-public class WeatherDelayScenarios {
+public class WeatherDelayScenarios implements WeatherDelayInterface {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
     public List<Incident> getRainStopPlayIncidents() {
@@ -36,8 +37,7 @@ public class WeatherDelayScenarios {
         return incidents;
     }
 
-
-    public ArrayList<Incident> getRainStopAndStartPlayIncidents() {
+    public List<Incident> getRainStopAndStartPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         incidents = getMatchIncidents(tennisIncidentsHelper);
@@ -56,7 +56,7 @@ public class WeatherDelayScenarios {
         return incidents;
     }
 
-    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "0:00:00";
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
@@ -73,4 +73,5 @@ public class WeatherDelayScenarios {
 
         return incidents;
     }
+
 }

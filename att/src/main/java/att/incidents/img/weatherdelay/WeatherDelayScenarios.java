@@ -5,32 +5,12 @@ import java.util.ArrayList;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
+import att.incidents.inter.WeatherDelayInterface;
 
-public class WeatherDelayScenarios {
+public class WeatherDelayScenarios implements WeatherDelayInterface {
 
     private ArrayList<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
-
-    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
-        incidents = new ArrayList<>();
-        incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
-        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
-        incidents.add(tennisIncidentsHelper.getPregameInProgressIncidentIMG(Side.HOME));
-        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG());
-        incidents.add(tennisIncidentsHelper.getPeriodIncident("", Side.HOME, 1, 1));
-
-        incidents.add(tennisIncidentsHelper.getPointIncident("0:10", "15-0",
-                Side.HOME, Side.HOME, "0,0,0", "0,0,0",
-                1, 1));
-
-        incidents.add(tennisIncidentsHelper.getPointIncident("0:20", "15-15",
-                Side.AWAY, Side.HOME, "0,0,0", "0,0,0",
-                1, 1));
-        incidents.add(tennisIncidentsHelper.getPointIncident("0:25", "30-15",
-                Side.HOME, Side.HOME, "0,0,0", "0,0,0",
-                1, 1));
-        return incidents;
-    }
 
     public ArrayList<Incident> getRainStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
@@ -72,4 +52,26 @@ public class WeatherDelayScenarios {
                 1, 1));
         return incidents;
     }
+
+    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+        incidents = new ArrayList<>();
+        incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
+        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameInProgressIncidentIMG(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG());
+        incidents.add(tennisIncidentsHelper.getPeriodIncident("", Side.HOME, 1, 1));
+
+        incidents.add(tennisIncidentsHelper.getPointIncident("0:10", "15-0",
+                Side.HOME, Side.HOME, "0,0,0", "0,0,0",
+                1, 1));
+
+        incidents.add(tennisIncidentsHelper.getPointIncident("0:20", "15-15",
+                Side.AWAY, Side.HOME, "0,0,0", "0,0,0",
+                1, 1));
+        incidents.add(tennisIncidentsHelper.getPointIncident("0:25", "30-15",
+                Side.HOME, Side.HOME, "0,0,0", "0,0,0",
+                1, 1));
+        return incidents;
+    }
+
 }

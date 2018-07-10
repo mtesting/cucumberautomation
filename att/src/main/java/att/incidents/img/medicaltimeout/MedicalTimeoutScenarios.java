@@ -1,6 +1,7 @@
 package att.incidents.img.medicaltimeout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
@@ -8,10 +9,10 @@ import att.incidents.TennisIncidentsHelper;
 
 public class MedicalTimeoutScenarios {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
-    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -34,7 +35,7 @@ public class MedicalTimeoutScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getMedicalTimeoutAIncidents() {
+    public List<Incident> getMedicalTimeoutAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -44,7 +45,7 @@ public class MedicalTimeoutScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getMedicalTimeoutBIncidents() {
+    public List<Incident> getMedicalTimeoutBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -54,7 +55,7 @@ public class MedicalTimeoutScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getMedicalTimeoutAndUndoAIncidents() {
+    public List<Incident> getMedicalTimeoutAndUndoAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -73,7 +74,7 @@ public class MedicalTimeoutScenarios {
                 "0,0,0", "0,0,0", 1, 1);
     }
 
-    public ArrayList<Incident> getMedicalTimeoutOffAIncidents() {
+    public List<Incident> getMedicalTimeoutOffAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -91,7 +92,7 @@ public class MedicalTimeoutScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getMedicalTimeoutOffBIncidents() {
+    public List<Incident> getMedicalTimeoutOffBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 

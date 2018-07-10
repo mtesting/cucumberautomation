@@ -6,10 +6,11 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
+import att.incidents.inter.RetirementInterface;
 
-public class RetirementScenarios {
+public class RetirementScenarios implements RetirementInterface {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
     public List<Incident> getRetirementPrePlayTeamAIncidents() {
@@ -23,7 +24,7 @@ public class RetirementScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getRetirementPrePlayTeamBIncidents() {
+    public List<Incident> getRetirementPrePlayTeamBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         incidents = new ArrayList<>();
@@ -34,7 +35,7 @@ public class RetirementScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getRetirementTeamAServerSetIncidents() {
+    public List<Incident> getRetirementTeamAServerSetIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         incidents = new ArrayList<>();
@@ -47,7 +48,7 @@ public class RetirementScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getRetirementTeamBServerSetIncidents() {
+    public List<Incident> getRetirementTeamBServerSetIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         incidents = new ArrayList<>();
@@ -60,7 +61,7 @@ public class RetirementScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getRetirementInPlayTeamAIncidents() {
+    public List<Incident> getRetirementInPlayTeamAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         String initialTime = "0:00:00";
@@ -86,7 +87,7 @@ public class RetirementScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getRetirementInPlayTeamBIncidents() {
+    public List<Incident> getRetirementInPlayTeamBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
 
         String initialTime = "0:00:00";
@@ -111,4 +112,5 @@ public class RetirementScenarios {
                 1, 1));
         return incidents;
     }
+
 }

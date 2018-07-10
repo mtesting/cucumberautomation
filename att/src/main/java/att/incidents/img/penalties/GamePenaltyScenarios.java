@@ -1,8 +1,7 @@
 package att.incidents.img.penalties;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
+import java.util.List;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
@@ -10,10 +9,10 @@ import att.incidents.TennisIncidentsHelper;
 
 public class GamePenaltyScenarios {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
-    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -37,13 +36,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    @Test
-    public void testTry() {
-        tennisIncidentsHelper = new TennisIncidentsHelper();
-        getOnePointFromSetA(tennisIncidentsHelper);
-    }
-
-    private ArrayList<Incident> getOnePointFromSetA(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getOnePointFromSetA(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -117,7 +110,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    private ArrayList<Incident> getThreePointsFromSetB(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getThreePointsFromSetB(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -191,7 +184,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getGamePenaltyAIncidents() {
+    public List<Incident> getGamePenaltyAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -203,7 +196,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getGamePenaltyBIncidents() {
+    public List<Incident> getGamePenaltyBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
 
@@ -219,7 +212,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getWinSetByGamePenaltyAIncidents() {
+    public List<Incident> getWinSetByGamePenaltyAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getOnePointFromSetA(tennisIncidentsHelper);
 
@@ -235,7 +228,7 @@ public class GamePenaltyScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getWinSetByGamePenaltyBIncidents() {
+    public List<Incident> getWinSetByGamePenaltyBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getThreePointsFromSetB(tennisIncidentsHelper);
 

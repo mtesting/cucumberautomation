@@ -1,6 +1,7 @@
 package att.incidents.betradar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
@@ -8,10 +9,10 @@ import att.incidents.TennisIncidentsHelper;
 
 public class MatchScenarios {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
-    private ArrayList<Incident> getOnePointFromMatchA(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getOnePointFromMatchA(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "00:00";
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
@@ -89,7 +90,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getMatchWinAIncidents() {
+    public List<Incident> getMatchWinAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getOnePointFromMatchA(tennisIncidentsHelper);
 
@@ -101,7 +102,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getDeuceAndGameIncidentsA() {
+    public List<Incident> getDeuceAndGameIncidentsA() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = new ArrayList<>();
 
@@ -142,7 +143,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getDeuceAndGameIncidentsB() {
+    public List<Incident> getDeuceAndGameIncidentsB() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = new ArrayList<>();
 
@@ -183,7 +184,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getSet2_0Incidents() {
+    public List<Incident> getSet2_0Incidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = new ArrayList<>();
 
@@ -199,7 +200,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getSet3CorrectScoreBugIncidents() {
+    public List<Incident> getSet3CorrectScoreBugIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = new ArrayList<>();
 
@@ -242,7 +243,7 @@ public class MatchScenarios {
         incidents.addAll(getGameIncidents(tennisIncidentsHelper, Side.AWAY, Side.AWAY, "6,6,0", "0,5,0", 2, 12));
         incidents.add(tennisIncidentsHelper.getPeriodIncident("00:00", Side.HOME, 2, 13));
 
-        ArrayList<String> matchTimes = getMatchTimes(1, 0);
+        List<String> matchTimes = getMatchTimes(1, 0);
 
         for (int i = 0; i < incidents.size(); i++) {
             incidents.get(i).setMatchTime(matchTimes.get(i));
@@ -251,7 +252,8 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getSetIncidents(TennisIncidentsHelper tennisIncidentsHelper, int setNumber, int historySet1A, int historySet1B, Side winner, Side serverSide) {
+    public List<Incident> getSetIncidents(TennisIncidentsHelper tennisIncidentsHelper, int setNumber, int historySet1A,
+            int historySet1B, Side winner, Side serverSide) {
         int gameNumber = 1;
         int historySet2A = 0;
         int historySet2B = 0;
@@ -302,7 +304,7 @@ public class MatchScenarios {
         return setIncidents;
     }
 
-    public ArrayList<Incident> getGameIncidents(TennisIncidentsHelper tennisIncidentsHelper, Side server, Side winner, String historySetA,
+    public List<Incident> getGameIncidents(TennisIncidentsHelper tennisIncidentsHelper, Side server, Side winner, String historySetA,
             String historySetB, int setNumber, int gameNumber) {
         ArrayList<Incident> gameIncidents = new ArrayList<>();
         gameIncidents.add(tennisIncidentsHelper.getPointIncident("00:00", winner == Side.HOME ? "15-0" : "0-15", winner, server,
@@ -337,9 +339,9 @@ public class MatchScenarios {
         return set1Games + "," + set2Games + "," + set3Games;
     }
 
-    public ArrayList<Incident> getIncidents() {
+    public List<Incident> getIncidents() {
         incidents = new ArrayList<>();
-        ArrayList<String> matchTimes = getMatchTimes(1, 0);
+        List<String> matchTimes = getMatchTimes(1, 0);
 
         for (int i = 0; i < incidents.size(); i++) {
             incidents.get(i).setMatchTime(matchTimes.get(i));
@@ -348,14 +350,14 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<String> getMatchTimes(String startTime) {
+    public List<String> getMatchTimes(String startTime) {
 
         int startMins = Integer.parseInt(startTime.split(":")[0]);
         int startSeconds = Integer.parseInt(startTime.split(":")[1]);
         return getMatchTimes(startMins, startSeconds);
     }
 
-    public ArrayList<String> getMatchTimes(int mins, int seconds) {
+    public List<String> getMatchTimes(int mins, int seconds) {
         ArrayList<String> matchTimes = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {

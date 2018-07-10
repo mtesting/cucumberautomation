@@ -2,6 +2,7 @@ package att.incidents.img;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
@@ -9,9 +10,9 @@ import att.incidents.TennisIncidentsHelper;
 
 public class MatchScenarios {
 
-    private ArrayList<Incident> incidents;
+    private List<Incident> incidents;
 
-    private ArrayList<Incident> getOnePointFromMatchA(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getOnePointFromMatchA(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -89,7 +90,7 @@ public class MatchScenarios {
         return incidents;
     }
 
-    public ArrayList<Incident> getWinMatchIncidentsA() {
+    public List<Incident> getWinMatchIncidentsA() {
         TennisIncidentsHelper tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getOnePointFromMatchA(tennisIncidentsHelper);
 
