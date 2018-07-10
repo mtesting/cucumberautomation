@@ -2,11 +2,16 @@ package steps.att;
 
 import org.apache.log4j.Logger;
 
+import java.util.List;
 import java.util.Map;
 
+import ats.betting.trading.att.ws.scenario.dto.Incident;
+import att.incidents.betradar.retirement.RetirementScenariosBetradar;
 import att.incidents.betradar.weatherdelay.WeatherDelayScenariosBetradar;
 import att.incidents.img.weatherdelay.WeatherDelayScenariosImg;
+import att.incidents.interfaces.RetirementScenarios;
 import att.incidents.interfaces.WeatherDelayScenarios;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -94,6 +99,29 @@ public class Tennis extends EventSteps {
             weatherDelayScenarios = new WeatherDelayScenariosBetradar();
         }
         eventHelper.sendIncidents(weatherDelayScenarios.getHeatStopPlayIncidents());
+    }
+
+    @And("^the event runs the tennis for Abandon on \"([^\"]*)\"$")
+    public void theEventRunsTheTennisForAbandonOn(String abandonType) throws Throwable {
+        RetirementScenarios retirementScenarios = null;
+        if ("IMG".equalsIgnoreCase(incidentsProvider)){
+            retirementScenarios = new RetirementScenariosBetradar();
+        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
+            retirementScenarios = new RetirementScenariosBetradar();
+        }
+        List<Incident> incidents = null;
+        switch (abandonType){
+            case "pre-match":
+                incidents = retirementScenarios.getRetirementPrePlayTeamAIncidents();
+                break;
+            case "serve":
+                incidents = retirementScenarios.getRetirementTeamAServerSetIncidents();
+                break;
+            case "1st set":
+                incidents = retirementScenarios.getRetirementInPlayTeamAIncidents();
+                break;
+        }
+        eventHelper.sendIncidents(incidents);
     }
 
 }
