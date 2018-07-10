@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
-import att.incidents.inter.WeatherDelayInterface;
+import att.incidents.inter.WeatherDelayScenarios;
 
-public class WeatherDelayScenarios implements WeatherDelayInterface {
+public class WeatherDelayScenariosImg implements WeatherDelayScenarios {
 
     private ArrayList<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;

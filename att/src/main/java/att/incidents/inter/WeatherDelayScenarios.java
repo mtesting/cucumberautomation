@@ -5,7 +5,7 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import att.incidents.TennisIncidentsHelper;
 
-public interface WeatherDelayInterface {
+public interface WeatherDelayScenarios {
 
     List<Incident> incidents = null;
     TennisIncidentsHelper tennisIncidentsHelper = null;
