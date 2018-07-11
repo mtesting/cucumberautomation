@@ -8,7 +8,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisChallenge.xlsx" sheet "set1"
+    And the event runs the tennis for Challenged Delay
 
   @T-ImgChallenge-algoBSO
   Scenario: Tennis Challenge
@@ -16,7 +16,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisChallenge.xlsx" sheet "set1"
+    And the event runs the tennis for Challenged Delay
 
 
   @T-BrHeatDelay-algoBSO

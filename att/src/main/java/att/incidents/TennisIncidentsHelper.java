@@ -436,4 +436,19 @@ public class TennisIncidentsHelper {
         return incident;
     }
 
+    public Incident getChallengedIncident(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+        Tennis incident = new Tennis();
+        incident.setType(IncidentType.CHALLENGED);
+        incident.setSide(Side.HOME);
+        incident.setMatchTime(matchTime);
+        incident.setScore(score);
+        incident.setSet(setNumber);
+        incident.setGame(gameNumber);
+        incident.setHistoryA(historySet1);
+        incident.setHistoryB(historySet2);
+        incident.setServer(serverSide);
+        incident.setIncidentDelay(20);
+        incident.setWinningPoint(false);
+        return incident;
+    }
 }

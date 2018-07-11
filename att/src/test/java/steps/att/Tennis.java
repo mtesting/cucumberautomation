@@ -124,4 +124,14 @@ public class Tennis extends EventSteps {
         eventHelper.sendIncidents(incidents);
     }
 
+    @And("^the event runs the tennis for Challenged Delay$")
+    public void theEventRunsTheTennisForChallengedDelay() throws Throwable {
+        WeatherDelayScenarios weatherDelayScenarios = null;
+        if ("IMG".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosImg();
+        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
+        }
+        eventHelper.sendIncidents(weatherDelayScenarios.getChallengeStopPlayIncidents());
+    }
 }
