@@ -10,6 +10,7 @@ import att.incidents.interfaces.WeatherDelayScenariosImp;
 
 public class WeatherDelayScenariosBetradar extends WeatherDelayScenariosImp {
 
+    @Override
     public List<Incident> getWeatherStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = getMatchIncidents(tennisIncidentsHelper);
