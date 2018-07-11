@@ -39,7 +39,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0", 1, 1));
 
-        incidents.add(tennisIncidentsHelper.getUndoIncidentIMG("0:35", "15-15", Side.HOME, Side.HOME,
+        incidents.add(tennisIncidentsHelper.getUndoIncident("0:35", "15-15", Side.HOME, Side.HOME,
                 "0,0,0", "0,0,0", 1, 1));
 
         return incidents;
@@ -47,7 +47,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public Incident getUndoIncident() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        return tennisIncidentsHelper.getUndoIncidentIMG("0:35", "15-15", Side.HOME, Side.HOME,
+        return tennisIncidentsHelper.getUndoIncident("0:35", "15-15", Side.HOME, Side.HOME,
                 "0,0,0", "0,0,0", 1, 1);
     }
 
