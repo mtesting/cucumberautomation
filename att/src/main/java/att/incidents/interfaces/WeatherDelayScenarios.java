@@ -22,4 +22,6 @@ public interface WeatherDelayScenarios {
 
     List<Incident> getHeatStopPlayIncidents();
 
+    List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper);
+
 }
