@@ -7,9 +7,8 @@ import java.util.Date;
 import decoders.Decoder;
 import decoders.DecoderConfigException;
 import decoders.DecoderManager;
-import other.SeleniumUtils;
 
-public class TestPromotionData extends SeleniumUtils {
+public class TestPromotionData {
 
     private String name;
     private String title;
