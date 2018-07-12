@@ -21,6 +21,7 @@ public class WeatherDelayScenariosBetradar extends WeatherDelayScenariosImp {
         return incidents;
     }
 
+    @Override
     public List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "0:00:00";
         incidents = new ArrayList<>();
