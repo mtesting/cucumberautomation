@@ -59,20 +59,14 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set3"
+    And the event runs the tennis for Coach on Court Delay
 
   @T-imgOCCouch-algoBSO
   Scenario: Tennis On court coach
     Given a tennis event set as authorized, displayed and in-play
       | Incidents | IMG         |
       | StartTime | currenttime |
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set3"
+    And the event runs the tennis for Coach on Court Delay
 
 
   @T-BrRainDelay-algoBSO
@@ -107,10 +101,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set3"
+    And the event runs the tennis for Toilet Break Delay
 
   @T-imgToiletBreak-algoBSO
   Scenario: Tennis ToiletBreak
@@ -118,4 +109,4 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set1"
+    And the event runs the tennis for Toilet Break Delay

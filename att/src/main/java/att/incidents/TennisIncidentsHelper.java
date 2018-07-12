@@ -132,6 +132,38 @@ public class TennisIncidentsHelper {
         return incident;
     }
 
+    public Incident getOnCourtCoachIncident(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+        Tennis incident = new Tennis();
+        incident.setType(IncidentType.ON_COURT_COACHING);
+        incident.setSide(Side.HOME);
+        incident.setMatchTime(matchTime);
+        incident.setScore(score);
+        incident.setSet(setNumber);
+        incident.setGame(gameNumber);
+        incident.setHistoryA(historySet1);
+        incident.setHistoryB(historySet2);
+        incident.setServer(serverSide);
+        incident.setIncidentDelay(20);
+        incident.setWinningPoint(false);
+        return incident;
+    }
+
+    public Incident getToiletBreakIncident(String matchTime, String score, Side serverSide, String historySet1, String historySet2, int gameNumber, int setNumber) {
+        Tennis incident = new Tennis();
+        incident.setType(IncidentType.TOILET_BREAK_STARTED);
+        incident.setSide(Side.HOME);
+        incident.setMatchTime(matchTime);
+        incident.setScore(score);
+        incident.setSet(setNumber);
+        incident.setGame(gameNumber);
+        incident.setHistoryA(historySet1);
+        incident.setHistoryB(historySet2);
+        incident.setServer(serverSide);
+        incident.setIncidentDelay(20);
+        incident.setWinningPoint(false);
+        return incident;
+    }
+
     public Incident getMatchStateChangedIncidentIMG() {
         String initialTime = "0:00:10";
         Tennis incident = new Tennis();

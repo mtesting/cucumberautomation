@@ -24,6 +24,10 @@ public interface WeatherDelayScenarios {
 
     List<Incident> getChallengeStopPlayIncidents();
 
+    List<Incident> getOnCourtCoachStopAndStartPlayIncidents();
+
+    List<Incident> getToiletBreakStopAndStartPlayIncidents();
+
     List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper);
 
 }

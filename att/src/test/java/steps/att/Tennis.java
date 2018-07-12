@@ -134,4 +134,26 @@ public class Tennis extends EventSteps {
         }
         eventHelper.sendIncidents(weatherDelayScenarios.getChallengeStopPlayIncidents());
     }
+
+    @And("^the event runs the tennis for Coach on Court Delay$")
+    public void theEventRunsTheTennisForCoachOnCourtDelay() throws Throwable {
+        WeatherDelayScenarios weatherDelayScenarios = null;
+        if ("IMG".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosImg();
+        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
+        }
+        eventHelper.sendIncidents(weatherDelayScenarios.getOnCourtCoachStopAndStartPlayIncidents());
+    }
+
+    @And("^the event runs the tennis for Toilet Break Delay$")
+    public void theEventRunsTheTennisForToiletBreakDelay() throws Throwable {
+        WeatherDelayScenarios weatherDelayScenarios = null;
+        if ("IMG".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosImg();
+        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
+            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
+        }
+        eventHelper.sendIncidents(weatherDelayScenarios.getToiletBreakStopAndStartPlayIncidents());
+    }
 }
