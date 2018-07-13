@@ -11,7 +11,7 @@ public class PointPenaltyScenarios {
     private ArrayList<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
-    private ArrayList<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private ArrayList<Incident> getMatchInitialIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -32,7 +32,7 @@ public class PointPenaltyScenarios {
 
     public ArrayList<Incident> getCodePointPenaltyAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getCodePointPenaltyIncident("0:25", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0",
@@ -43,7 +43,7 @@ public class PointPenaltyScenarios {
 
     public ArrayList<Incident> getCodePointPenaltyBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getCodePointPenaltyIncident("0:25", "15-30",
                 Side.HOME, Side.HOME, "0,0,0", "0,0,0",
@@ -54,7 +54,7 @@ public class PointPenaltyScenarios {
 
     public ArrayList<Incident> getTimePointPenaltyAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getTimePointPenaltyIncident("0:25", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0",
@@ -65,7 +65,7 @@ public class PointPenaltyScenarios {
 
     public ArrayList<Incident> getTimePointPenaltyBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getTimePointPenaltyIncident("0:25", "15-30",
                 Side.HOME, Side.HOME, "0,0,0", "0,0,0",

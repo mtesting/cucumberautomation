@@ -12,7 +12,7 @@ public class GamePenaltyScenarios {
     private List<Incident> incidents;
     private TennisIncidentsHelper tennisIncidentsHelper;
 
-    private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getMatchInitialIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
@@ -186,7 +186,7 @@ public class GamePenaltyScenarios {
 
     public List<Incident> getGamePenaltyAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         // We get the Match back at 30-30 - A GamePenalty To Player B will award the game to Player A
         incidents.add(tennisIncidentsHelper.getGameWonPenaltyIncident("0:40", "0-0",
@@ -198,7 +198,7 @@ public class GamePenaltyScenarios {
 
     public List<Incident> getGamePenaltyBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         // We get the  Score back at 30-30, we award B a point to 30-40, then give Player A a GamePenalty - B wins the Game
         incidents.add(tennisIncidentsHelper.getPointIncident("0:35", "30-40",

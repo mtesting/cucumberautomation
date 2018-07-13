@@ -15,7 +15,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getRainStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -26,7 +26,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getRainStopPlayAndUndoIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -40,7 +40,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getRainStopAndStartPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getRainStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -57,7 +57,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getHeatStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getHeatStopPlayIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -68,7 +68,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getChallengeStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getChallengedIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -82,7 +82,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getOnCourtCoachStopAndStartPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getOnCourtCoachIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -96,7 +96,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getToiletBreakStopAndStartPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getToiletBreakIncident("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -108,7 +108,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     }
 
     @Override
-    public List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    public List<Incident> getMatchInitialIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "0:00:00";
         incidents = new ArrayList<>();
 
@@ -132,7 +132,7 @@ public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
     @Override
     public List<Incident> getWeatherStopPlayIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getWeatherStopPlayIncidentBetRadar("0:30", "30-0",
                 Side.HOME, "0,0,0", "0,0,0",

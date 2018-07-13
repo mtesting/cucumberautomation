@@ -28,6 +28,6 @@ public interface WeatherDelayScenarios {
 
     List<Incident> getToiletBreakStopAndStartPlayIncidents();
 
-    List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper);
+    List<Incident> getMatchInitialIncidents(TennisIncidentsHelper tennisIncidentsHelper);
 
 }

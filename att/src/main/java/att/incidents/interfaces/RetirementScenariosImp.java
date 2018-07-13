@@ -33,8 +33,8 @@ public class RetirementScenariosImp implements RetirementScenarios {
         incidents = new ArrayList<>();
 
         incidents.add(tennisIncidentsHelper.getPregameIncident());
-        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME)); //TODO remove?
-        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG()); //TODO would affect BR?
+        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME)); //TODO needed?
+        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG()); //TODO needed?
         incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
 
         incidents.add(tennisIncidentsHelper.getRetirementIncident("0:00", "0-0",
@@ -47,12 +47,11 @@ public class RetirementScenariosImp implements RetirementScenarios {
     public List<Incident> getRetirementInPlayTeamAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
         incidents = new ArrayList<>();
-
         String initialTime = "0:00:00";
 
         incidents.add(tennisIncidentsHelper.getPregameIncident());
-        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME)); //TODO remove?
-        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG()); //TODO would affect BR?
+        incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME)); //TODO needed?
+        incidents.add(tennisIncidentsHelper.getMatchStateChangedIncidentIMG()); //TODO needed?
         incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
 
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME,  1, 1));

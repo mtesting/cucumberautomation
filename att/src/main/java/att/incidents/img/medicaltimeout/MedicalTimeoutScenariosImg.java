@@ -14,7 +14,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public List<Incident> getMedicalTimeoutAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.HOME, Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -24,7 +24,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public List<Incident> getMedicalTimeoutBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -34,7 +34,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public List<Incident> getMedicalTimeoutAndUndoAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -53,7 +53,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public List<Incident> getMedicalTimeoutOffAIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.HOME, Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -71,7 +71,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
 
     public List<Incident> getMedicalTimeoutOffBIncidents() {
         tennisIncidentsHelper = new TennisIncidentsHelper();
-        incidents = getMatchIncidents(tennisIncidentsHelper);
+        incidents = getMatchInitialIncidents(tennisIncidentsHelper);
 
         incidents.add(tennisIncidentsHelper.getMedicalTimeOutOnIncidentIMG("0:30", "30-15",
                 Side.AWAY, Side.HOME, "0,0,0", "0,0,0", 1, 1));
@@ -87,7 +87,7 @@ public class MedicalTimeoutScenariosImg implements att.incidents.interfaces.Medi
         return incidents;
     }
 
-    private List<Incident> getMatchIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
+    private List<Incident> getMatchInitialIncidents(TennisIncidentsHelper tennisIncidentsHelper) {
         incidents = new ArrayList<>();
         incidents.add(tennisIncidentsHelper.getPregameUmpireIncidentIMG());
         incidents.add(tennisIncidentsHelper.getPregameTossIncidentIMG(Side.HOME));
