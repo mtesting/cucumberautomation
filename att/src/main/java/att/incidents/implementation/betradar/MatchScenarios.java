@@ -1,4 +1,4 @@
-package att.incidents.betradar;
+package att.incidents.implementation.betradar;
 
 import java.util.ArrayList;
 import java.util.List;

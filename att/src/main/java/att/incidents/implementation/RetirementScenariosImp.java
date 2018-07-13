@@ -1,4 +1,4 @@
-package att.incidents.interfaces;
+package att.incidents.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
+import att.incidents.interfaces.RetirementScenarios;
 
 public class RetirementScenariosImp implements RetirementScenarios {
 

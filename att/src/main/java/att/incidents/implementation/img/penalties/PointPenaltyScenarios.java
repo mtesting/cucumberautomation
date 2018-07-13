@@ -1,4 +1,4 @@
-package att.incidents.img.penalties;
+package att.incidents.implementation.img.penalties;
 
 import java.util.ArrayList;
 

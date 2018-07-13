@@ -1,4 +1,4 @@
-package att.incidents.img.medicaltimeout;
+package att.incidents.implementation.img.medicaltimeout;
 
 import java.util.ArrayList;
 import java.util.List;

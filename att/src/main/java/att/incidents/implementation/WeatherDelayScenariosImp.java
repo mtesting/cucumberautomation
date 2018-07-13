@@ -1,4 +1,4 @@
-package att.incidents.interfaces;
+package att.incidents.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,9 @@ import java.util.List;
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import ats.betting.trading.att.ws.scenario.dto.Side;
 import att.incidents.TennisIncidentsHelper;
+import att.incidents.interfaces.WeatherDelayScenarios;
 
-public class WeatherDelayScenariosImp implements WeatherDelayScenarios{
+public class WeatherDelayScenariosImp implements WeatherDelayScenarios {
 
     protected List<Incident> incidents;
     protected TennisIncidentsHelper tennisIncidentsHelper;

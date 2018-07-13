@@ -7,9 +7,9 @@ import java.util.Map;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
 import att.incidents.interfaces.RetirementScenarios;
-import att.incidents.interfaces.RetirementScenariosImp;
+import att.incidents.implementation.RetirementScenariosImp;
 import att.incidents.interfaces.WeatherDelayScenarios;
-import att.incidents.interfaces.WeatherDelayScenariosImp;
+import att.incidents.implementation.WeatherDelayScenariosImp;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
