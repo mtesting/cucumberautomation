@@ -49,6 +49,7 @@ public class Constants {
     public static final String POKERSTARS_QACORE_PUNTER_URL = System.getProperty("pokerstars.qacore.url");
     public static final String ATS_DB_USER = System.getProperty("ats.db.user");
     public static final String BF_PPBF_DB_URL = System.getProperty("betfair.ppbf.db");
+    public static final String BF_PPBF_DB_PASSWORD = System.getProperty("betfair.ppbf.db.pwd");
     public static final String BF_PPBF_ATT = System.getProperty("betfair.ppbf.att");
     public static final String MYBET_DB_PASSWORD = System.getProperty("mybet.db.password");
     public static final String androidDeviceName = System.getProperty("android.devicename");

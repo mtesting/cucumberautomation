@@ -68,7 +68,7 @@ public class GenericSteps extends EventSteps {
 
     @Then("^the relevant markets should get settled$")
     public void the_relevant_markets_should_get_settled() throws Throwable {
-        //Utils.waitSeconds(120); //AlgoMgr has 2min delay when doing the resulting
+        Utils.waitSeconds(120); //AlgoMgr has 2min delay when doing the resulting
         int timeout = 15;
         int pollIntervalSecs = 1;
         boolean resulted = false;

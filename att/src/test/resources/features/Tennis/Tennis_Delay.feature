@@ -8,8 +8,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisChallenge.xlsx" sheet "set1"
-
+    And the event runs the tennis for Challenged Delay
 
   @T-ImgChallenge-algoBSO
   Scenario: Tennis Challenge
@@ -17,7 +16,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisChallenge.xlsx" sheet "set1"
+    And the event runs the tennis for Challenged Delay
 
 
   @T-BrHeatDelay-algoBSO
@@ -26,22 +25,15 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set13"
-
+    And the event runs the tennis for Heat Delay
 
   @T-ImgHeatDelay-algoBSO
-  Scenario: Tennis HeatDelay
+  Scenario: Tennis Heat Delay
     Given a tennis event set as authorized, displayed and in-play
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisHeatDelay.xlsx" sheet "set13"
+    And the event runs the tennis for Heat Delay
 
 
   @T-BrMedTimeOut-algoBSO
@@ -51,7 +43,6 @@ Feature: Tennis Delays (Semi Automated)
       | StartTime | currenttime |
     When user sets the tier level in trader client
     When the event runs the tennis incidents from "Tennis/TennisMedTO.xlsx" sheet "set1"
-
 
   @T-ImgMedTimeOut-algoBSO
   Scenario: Tennis Medical time out delay
@@ -68,21 +59,14 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set3"
-
+    And the event runs the tennis for Coach on Court Delay
 
   @T-imgOCCouch-algoBSO
   Scenario: Tennis On court coach
     Given a tennis event set as authorized, displayed and in-play
       | Incidents | IMG         |
       | StartTime | currenttime |
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisOCCouch.xlsx" sheet "set3"
+    And the event runs the tennis for Coach on Court Delay
 
 
   @T-BrRainDelay-algoBSO
@@ -91,29 +75,24 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisRainDelay.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisRainDelay.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisRainDelay.xlsx" sheet "set3"
-
-  @T-BrWeatherDelay-algoBSO
-  Scenario: TennisWeatherDelay
-    Given a tennis event set as authorized, displayed and in-play
-      | Incidents | BETRADAR    |
-      | StartTime | currenttime |
-    When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisWeatherDelay.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisWeatherDelay.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisWeatherDelay.xlsx" sheet "set3"
+    And the event runs the tennis for Rain Delay
 
   @T-imgRainDelay-algoBSO
-  Scenario: Tennis RainDelay
+  Scenario: Tennis Rain Delay
     Given a tennis event set as authorized, displayed and in-play
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisRainDelay.xlsx" sheet "set1"
+    When the event runs the tennis for Rain Delay
+
+
+  @T-BrWeatherDelay-algoBSO
+  Scenario: Tennis Weather Delay
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | BETRADAR    |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    And the event runs the tennis for Weather Delay
 
 
   @T-BrToiletBreak-algoBSO
@@ -122,11 +101,7 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | BETRADAR    |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set2"
-    And wait 3 minute
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set3"
-
+    And the event runs the tennis for Toilet Break Delay
 
   @T-imgToiletBreak-algoBSO
   Scenario: Tennis ToiletBreak
@@ -134,4 +109,4 @@ Feature: Tennis Delays (Semi Automated)
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/TennisToiletBreak.xlsx" sheet "set1"
+    And the event runs the tennis for Toilet Break Delay

@@ -6,20 +6,38 @@ import util.StringEncrypt;
 public class LadbrokesDecoder implements Decoder {
 
     public Long getCompetitionId(String sportName) throws DecoderConfigException {
-        Long competitionId;
-
-        switch (sportName.toUpperCase()) {
-            case "FOOTBALL":
-                competitionId = 166992L;
-                break;
-            case "TENNIS":
-                competitionId = 2166593L;
-                break;
+        switch (Constants.TESTING_ENV.toUpperCase()) {
+            case "TEST1":
+                switch (sportName.toUpperCase()) {
+                    case "FOOTBALL":
+                        return 166998L;
+                    case "TENNIS":
+                        return 2166593L;
+                    default:
+                        throw new DecoderConfigException("Sport name missing at the getCompetitionId() config");
+                }
+            case "TEST2":
+                switch (sportName.toUpperCase()) {
+                    case "FOOTBALL":
+                        return 12166701L;
+                    case "TENNIS":
+                        return 791075L;
+                    default:
+                        throw new DecoderConfigException("Sport name missing at the getCompetitionId() config");
+                }
+            case "AWS":
+            case "STAGING":
+                switch (sportName.toUpperCase()) {
+                    case "FOOTBALL":
+                        return 8765000L;
+                    case "TENNIS":
+                        return 791075L;
+                    default:
+                        throw new DecoderConfigException("Sport name missing at the getCompetitionId() config");
+                }
             default:
-                throw new DecoderConfigException("Sport name missing at the getCompetitionId() config");
+                throw new DecoderConfigException("Missing config at getCompetitionId() for env=" + Constants.TESTING_ENV);
         }
-
-        return competitionId;
     }
 
     @Override
@@ -29,6 +47,11 @@ public class LadbrokesDecoder implements Decoder {
 
     @Override
     public String decodeTradingUrl(String customer) throws DecoderConfigException {
+        throw new DecoderConfigException("Testing env missing at the decodeCustomerDb() config");
+    }
+
+    @Override
+    public String decodeNatsUrl(String customer) throws DecoderConfigException {
         return null;
     }
 
@@ -50,8 +73,6 @@ public class LadbrokesDecoder implements Decoder {
             default:
                 throw new DecoderConfigException("Missing config at decodeATTURL() for env=" + Constants.TESTING_ENV);
         }
-
-
     }
 
     @Override
