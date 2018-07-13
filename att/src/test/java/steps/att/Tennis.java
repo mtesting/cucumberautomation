@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import ats.betting.trading.att.ws.scenario.dto.Incident;
-import att.incidents.betradar.retirement.RetirementScenariosBetradar;
-import att.incidents.betradar.weatherdelay.WeatherDelayScenariosBetradar;
-import att.incidents.img.weatherdelay.WeatherDelayScenariosImg;
 import att.incidents.interfaces.RetirementScenarios;
+import att.incidents.interfaces.RetirementScenariosImp;
 import att.incidents.interfaces.WeatherDelayScenarios;
-import cucumber.api.PendingException;
+import att.incidents.interfaces.WeatherDelayScenariosImp;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -75,40 +73,25 @@ public class Tennis extends EventSteps {
 
     @And("^the event runs the tennis for Rain Delay$")
     public void theEventRunsTheTennisForRainDelay() throws Throwable {
-        WeatherDelayScenarios weatherDelayScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosImg();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
-        }
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getRainStopAndStartPlayIncidents());
     }
 
     @And("^the event runs the tennis for Weather Delay$")
     public void theEventRunsTheTennisForWeatherDelay() throws Throwable {
-        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosBetradar();
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getWeatherStopPlayIncidents());
     }
 
     @And("^the event runs the tennis for Heat Delay$")
     public void theEventRunsTheTennisForHeatDelay() throws Throwable {;
-        WeatherDelayScenarios weatherDelayScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosImg();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
-        }
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getHeatStopPlayIncidents());
     }
 
     @And("^the event runs the tennis for Abandon on \"([^\"]*)\"$")
     public void theEventRunsTheTennisForAbandonOn(String abandonType) throws Throwable {
-        RetirementScenarios retirementScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            retirementScenarios = new RetirementScenariosBetradar();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            retirementScenarios = new RetirementScenariosBetradar();
-        }
+        RetirementScenarios retirementScenarios = new RetirementScenariosImp();
         List<Incident> incidents = null;
         switch (abandonType){
             case "pre-match":
@@ -126,34 +109,20 @@ public class Tennis extends EventSteps {
 
     @And("^the event runs the tennis for Challenged Delay$")
     public void theEventRunsTheTennisForChallengedDelay() throws Throwable {
-        WeatherDelayScenarios weatherDelayScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosImg();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
-        }
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getChallengeStopPlayIncidents());
     }
 
     @And("^the event runs the tennis for Coach on Court Delay$")
     public void theEventRunsTheTennisForCoachOnCourtDelay() throws Throwable {
-        WeatherDelayScenarios weatherDelayScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosImg();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
-        }
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getOnCourtCoachStopAndStartPlayIncidents());
     }
 
     @And("^the event runs the tennis for Toilet Break Delay$")
     public void theEventRunsTheTennisForToiletBreakDelay() throws Throwable {
-        WeatherDelayScenarios weatherDelayScenarios = null;
-        if ("IMG".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosImg();
-        } else if ("BETRADAR".equalsIgnoreCase(incidentsProvider)){
-            weatherDelayScenarios = new WeatherDelayScenariosBetradar();
-        }
+        WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getToiletBreakStopAndStartPlayIncidents());
     }
+
 }

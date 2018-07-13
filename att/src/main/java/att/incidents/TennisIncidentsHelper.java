@@ -22,8 +22,8 @@ public class TennisIncidentsHelper {
         String initialTime = "0:00:00";
 
         List<Incident> incidents = new ArrayList<>();
-        incidents.add(getPregameIncidentBetradar());
-        incidents.add(getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(getPregameIncident());
+        incidents.add(getServeFirstIncident(Side.HOME));
         incidents.add(getPeriodIncident(initialTime, Side.HOME,
                 1, 1));
 
@@ -73,7 +73,7 @@ public class TennisIncidentsHelper {
         return incidents;
     }
 
-    public Incident getPregameIncidentBetradar() {
+    public Incident getPregameIncident() {
         String initialTime = "0:00:00";
         Tennis incident = new Tennis();
         incident.setMatchTime(initialTime);
@@ -101,7 +101,7 @@ public class TennisIncidentsHelper {
     }
 
     public Incident getPregameTossIncidentIMG(Side firstServerSide) {
-        String initialTime = "0:00:10";
+        String initialTime = "0:00:00";
         Tennis incident = new Tennis();
         incident.setMatchTime(initialTime);
         log.info(initialTime);
@@ -165,7 +165,7 @@ public class TennisIncidentsHelper {
     }
 
     public Incident getMatchStateChangedIncidentIMG() {
-        String initialTime = "0:00:10";
+        String initialTime = "0:00:00";
         Tennis incident = new Tennis();
         incident.setMatchTime(initialTime);
         log.info(initialTime);
@@ -291,7 +291,7 @@ public class TennisIncidentsHelper {
         return incident;
     }
 
-    public Incident getServeFirstIncidentBetRadar(Side firstServerSide) {
+    public Incident getServeFirstIncident(Side firstServerSide) {
         int firstGame = 1;
         int firstSet = 1;
         String initialTime = "0:00:00";
