@@ -15,8 +15,8 @@ public class MatchScenarios {
     private List<Incident> getOnePointFromMatchA(TennisIncidentsHelper tennisIncidentsHelper) {
         String initialTime = "00:00";
         incidents = new ArrayList<>();
-        incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
-        incidents.add(tennisIncidentsHelper.getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameIncident());
+        incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME,
                 1, 1));
 
@@ -107,8 +107,8 @@ public class MatchScenarios {
         incidents = new ArrayList<>();
 
         String initialTime = "00:00";
-        incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
-        incidents.add(tennisIncidentsHelper.getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameIncident());
+        incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME,
                 1, 1));
 
@@ -148,8 +148,8 @@ public class MatchScenarios {
         incidents = new ArrayList<>();
 
         String initialTime = "00:00";
-        incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
-        incidents.add(tennisIncidentsHelper.getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameIncident());
+        incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME,
                 1, 1));
 
@@ -189,8 +189,8 @@ public class MatchScenarios {
         incidents = new ArrayList<>();
 
         String initialTime = "00:00";
-        incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
-        incidents.add(tennisIncidentsHelper.getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameIncident());
+        incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME, 1, 1));
 
         // Get All Incidents for 1st Set
@@ -205,8 +205,8 @@ public class MatchScenarios {
         incidents = new ArrayList<>();
 
         String initialTime = "00:00";
-        incidents.add(tennisIncidentsHelper.getPregameIncidentBetradar());
-        incidents.add(tennisIncidentsHelper.getServeFirstIncidentBetRadar(Side.HOME));
+        incidents.add(tennisIncidentsHelper.getPregameIncident());
+        incidents.add(tennisIncidentsHelper.getServeFirstIncident(Side.HOME));
         incidents.add(tennisIncidentsHelper.getPeriodIncident(initialTime, Side.HOME, 1, 1));
 
         // Get All Incidents for 1st Set

@@ -12,14 +12,8 @@ public interface RetirementScenarios {
 
     List<Incident> getRetirementPrePlayTeamAIncidents();
 
-    List<Incident> getRetirementPrePlayTeamBIncidents();
-
     List<Incident> getRetirementTeamAServerSetIncidents();
 
-    List<Incident> getRetirementTeamBServerSetIncidents();
-
     List<Incident> getRetirementInPlayTeamAIncidents();
-
-    List<Incident> getRetirementInPlayTeamBIncidents();
     
 }
