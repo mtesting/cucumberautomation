@@ -1,6 +1,7 @@
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
@@ -9,11 +10,10 @@ import cucumber.api.junit.Cucumber;
         features = "classpath:features"
         , glue = {"steps.common", "steps.att", "steps.trader"}
         //,tags = {"@F-BrTxBets"}
-        ,tags = {"@T-imgE2E"}
+        ,tags = {"@F-BrE2E"}
         , monochrome = true
         , plugin = {"pretty", "html:target/html/", "json:target/reports.json"}
 )
-
 
 @Ignore
 public class TestRunner {

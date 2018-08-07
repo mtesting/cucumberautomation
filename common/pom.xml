@@ -5,7 +5,7 @@
     <parent>
         <artifactId>CucumberAutomation</artifactId>
         <groupId>amelco.testing</groupId>
-        <version>1.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>ats.betting</groupId>
             <artifactId>model</artifactId>
-            <version>389</version>
+            <version>492</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -41,4 +41,4 @@
         </dependency>
     </dependencies>
 
-        </project>
+</project>
