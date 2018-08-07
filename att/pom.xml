@@ -5,7 +5,7 @@
     <parent>
         <artifactId>CucumberAutomation</artifactId>
         <groupId>amelco.testing</groupId>
-        <version>1.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
@@ -163,7 +163,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>com.github.temyers</groupId>
                 <artifactId>cucumber-jvm-parallel-plugin</artifactId>
                 <version>4.2.0</version>
@@ -175,55 +175,55 @@
                             <goal>generateRunners</goal>
                         </goals>
                         <configuration>
-                            &lt;!&ndash; Mandatory &ndash;&gt;
-                            &lt;!&ndash; comma separated list of package names to scan for glue code &ndash;&gt;
+                            <!-- Mandatory -->
+                            <!-- comma separated list of package names to scan for glue code -->
                             <glue>
                                 <package>amelco.testing.sportsbookauto.steps.common</package>
                             </glue>
-                            &lt;!&ndash; These are optional, with the default values &ndash;&gt;
-                            &lt;!&ndash; Where to output the generated tests &ndash;&gt;
+                            <!-- These are optional, with the default values -->
+                            <!-- Where to output the generated tests -->
                             <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-                            &lt;!&ndash; The diectory, which must be in the root of the runtime classpath, containing your feature files.  &ndash;&gt;
-                            &lt;!&ndash; <featuresDirectory>src/test/resources/features/</featuresDirectory> &ndash;&gt;
+                            <!-- The diectory, which must be in the root of the runtime classpath, containing your feature files.  -->
+                            <!-- <featuresDirectory>src/test/resources/features/</featuresDirectory> -->
                             <featuresDirectory>src/test/resources/features/</featuresDirectory>
-                            &lt;!&ndash; Directory where the cucumber report files shall be written  &ndash;&gt;
+                            <!-- Directory where the cucumber report files shall be written  -->
                             <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-                            &lt;!&ndash; CucumberOptions.strict property &ndash;&gt;
+                            <!-- CucumberOptions.strict property -->
                             <strict>true</strict>
-                            &lt;!&ndash; CucumberOptions.monochrome property &ndash;&gt;
+                            <!-- CucumberOptions.monochrome property -->
                             <monochrome>true</monochrome>
-                            &lt;!&ndash; Generate TestNG runners instead of JUnit ones. &ndash;&gt;
+                            <!-- Generate TestNG runners instead of JUnit ones. -->
                             <useTestNG>false</useTestNG>
-                            &lt;!&ndash; The naming scheme to use for the generated test classes.  One of 'simple' or 'feature-title' &ndash;&gt;
+                            <!-- The naming scheme to use for the generated test classes.  One of 'simple' or 'feature-title' -->
                             <namingScheme>simple</namingScheme>
-                            &lt;!&ndash; The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.&ndash;&gt;
+                            <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
                             <namingPattern>Parallel{c}IT</namingPattern>
-                            &lt;!&ndash; One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. &ndash;&gt;
+                            <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
                             <parallelScheme>${parallel.scheme}</parallelScheme>
                             <plugins>
                                 <plugin>
-                                    &lt;!&ndash;The available options are junit, testng, html, pretty, json, usage and rerun &ndash;&gt;
+                                    <!--The available options are junit, testng, html, pretty, json, usage and rerun -->
                                     <name>json</name>
-                                    &lt;!&ndash;Optional file extension. For build in cucumber plugins a sensible default is provided. &ndash;&gt;
+                                    <!--Optional file extension. For build in cucumber plugins a sensible default is provided. -->
                                     <extension>json</extension>
-                                    &lt;!&ndash;Optional output directory. Overrides cucumberOutputDirectory. Usefull when different
-                                        plugins create files with the same extension&ndash;&gt;
+                                    <!--Optional output directory. Overrides cucumberOutputDirectory. Usefull when different
+                                        plugins create files with the same extension-->
                                     <outputDirectory>${project.build.directory}/cucumber-parallel/json</outputDirectory>
                                 </plugin>
-                                &lt;!&ndash;<plugin>&ndash;&gt;
-                                &lt;!&ndash;<name>path.to.my.formaters.CustomHtmlFormatter</name>&ndash;&gt;
-                                &lt;!&ndash;&lt;!&ndash;Optional file extension. Unless the formatter writes to a file it is strongly&ndash;&gt;
-                                &lt;!&ndash;recommend that one is provided. &ndash;&gt;&ndash;&gt;
-                                &lt;!&ndash;<extension>html</extension>&ndash;&gt;
-                                &lt;!&ndash;&lt;!&ndash;Optional output directory. Overrides cucumberOutputDirectory. Useful when different&ndash;&gt;
-                                &lt;!&ndash;plugins create files with the same extension&ndash;&gt;&ndash;&gt;
-                                &lt;!&ndash;<outputDirectory>${project.build.directory}/cucumber-parallel/html</outputDirectory>&ndash;&gt;
-                                &lt;!&ndash;</plugin>&ndash;&gt;
+                                <!--<plugin>-->
+                                <!--<name>path.to.my.formaters.CustomHtmlFormatter</name>-->
+                                <!--&lt;!&ndash;Optional file extension. Unless the formatter writes to a file it is strongly-->
+                                <!--recommend that one is provided. &ndash;&gt;-->
+                                <!--<extension>html</extension>-->
+                                <!--&lt;!&ndash;Optional output directory. Overrides cucumberOutputDirectory. Useful when different-->
+                                <!--plugins create files with the same extension&ndash;&gt;-->
+                                <!--<outputDirectory>${project.build.directory}/cucumber-parallel/html</outputDirectory>-->
+                                <!--</plugin>-->
                             </plugins>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
@@ -314,7 +314,7 @@
         <dependency>
             <groupId>ats.betting</groupId>
             <artifactId>model</artifactId>
-            <version>294</version>
+            <version>95</version>
         </dependency>
         <dependency>
             <groupId>io.gsi.ats.betsync</groupId>
@@ -324,10 +324,9 @@
         <dependency>
             <groupId>amelco.testing</groupId>
             <artifactId>common</artifactId>
-            <version>1.0</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
 
 </project>
-
