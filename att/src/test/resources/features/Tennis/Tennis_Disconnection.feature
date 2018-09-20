@@ -37,3 +37,12 @@ Feature: Tennis feed disconnection
     And the tennis feed heartbeat alive reply stops
     And the event runs the tennis incidents from "Tennis/TennisE2E_short.xlsx" sheet "set2"
     Then the relevant markets should get settled
+
+  ##this is for scout abandon
+  @T-BrMatchCoverageCancelDueToConnectionProblems
+  Scenario: Tennis coverage cancel due to connection problems
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | BETRADAR    |
+      | StartTime  | currentTime|
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/TennisBRDisconnection-ScoutAbandon.xlsx" sheet "set1"
