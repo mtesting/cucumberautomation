@@ -48,7 +48,7 @@ Feature: Tennis events E2E
     When the event runs the tennis incidents from "Tennis/TennisE2E.xlsx" sheet "set1"
     When the event runs the tennis incidents from "Tennis/TennisE2E.xlsx" sheet "set2"
     When the event runs the tennis incidents from "Tennis/TennisE2E.xlsx" sheet "set3"
-    Then the markets should be settled in "BETSYNCOUT" as specified in "Tennis/TennisE2E.xlsx" sheet "result" within 3 minutes
+    #Then the markets should be settled in "BETSYNCOUT" as specified in "Tennis/TennisE2E.xlsx" sheet "result" within 3 minutes
 
   @ppb-TennisSmokeTest
   @T-brE2E20-algoBSO
@@ -59,7 +59,7 @@ Feature: Tennis events E2E
     When user sets the tier level in trader client
     When the event runs the tennis incidents from "Tennis/TennisE2E_short.xlsx" sheet "set1"
     When the event runs the tennis incidents from "Tennis/TennisE2E_short.xlsx" sheet "set2"
-    Then the markets should be settled in "BETSYNCOUT" as specified in "Tennis/TennisE2E_short.xlsx" sheet "result" within 3 minutes
+    #Then the markets should be settled in "BETSYNCOUT" as specified in "Tennis/TennisE2E_short.xlsx" sheet "result" within 3 minutes
 
   @betfair
   @T-imgE2E-algoBSO
@@ -71,6 +71,21 @@ Feature: Tennis events E2E
     When the event runs the tennis incidents from "Tennis/TennisImgE2E.xlsx" sheet "set1"
     When the event runs the tennis incidents from "Tennis/TennisImgE2E.xlsx" sheet "set2"
     When the event runs the tennis incidents from "Tennis/TennisImgE2E.xlsx" sheet "set3"
+
+
+  @betfair
+  @T-imgE2E-5Set-algoBSO
+  Scenario: Tennis IMG E2E with resulting ( Semi Automated )
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | IMG         |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5set.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5set.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5set.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5set.xlsx" sheet "set4"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5set.xlsx" sheet "set5"
+
 
   @betfair
   @T-imgFaultPenalty-algoBSO
