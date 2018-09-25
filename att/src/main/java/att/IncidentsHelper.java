@@ -106,6 +106,7 @@ public class IncidentsHelper {
         final int PLAYER_SERVING = 8;
         final int PLAYER_RECEIVING = 9;
 
+
         log.info("-- STEP -- load incidents from file");
         log.info("Loading incidents from file=" + incidentsFile);
         List<Incident> incidentsList = new ArrayList<>();
@@ -163,6 +164,7 @@ public class IncidentsHelper {
         final int GAME = 7;
         final int PLAYER_SERVING = 8;
         final int IS_SET_WINNING_POINT = 9;
+       // final int ABANDON_NAME = 10;
 
         log.info("-- STEP -- load incidents from file");
         log.info("Loading incidents from file=" + incidentsFile);
@@ -181,11 +183,20 @@ public class IncidentsHelper {
 
                 try {
                     incident.setType(IncidentType.fromValue(row.getCell(TYPE).getStringCellValue()));
+                   //incident.setType(IncidentType.fromValue(row.getCell(ABANDON_NAME).getStringCellValue()));
                     switch (incident.getType()) {
                         case ABANDON_MATCH:
-                            incident.setName(AbandonName.WALKOVER);
+                           // incident.setName(AbandonName.WALKOVER);
+                            incident.setName(AbandonName.ILLNESS);
+                            //incident.setName(AbandonName.INJURY);
+                            //incident.setName(AbandonName.OTHER);
+                            //incident.setName(AbandonName.UNSPECIFIED);
+                            //incident.setName(AbandonName.UNKNOWN);
+                            //incident.setName(AbandonName.RETIREMENT);
+
                             break;
                         case TENNIS_MATCH_STATE_CHANGED:
+                            break;
                         case PREGAME:
                             incident.setMatchState(TennisMatchState.IN_PROGRESS);
                             break;
@@ -218,6 +229,11 @@ public class IncidentsHelper {
 
                 incident.setHistoryA(row.getCell(PLAYER_A_HISTORY, Row.CREATE_NULL_AS_BLANK).getStringCellValue());
                 incident.setHistoryB(row.getCell(PLAYER_B_HISTORY, Row.CREATE_NULL_AS_BLANK).getStringCellValue());
+
+
+
+
+
 
                 incident.setIncidentDelay(DEFAULT_INCIDENT_DELAY);
 
