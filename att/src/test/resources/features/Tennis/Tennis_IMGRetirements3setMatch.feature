@@ -28,7 +28,6 @@ Feature: Tennis Abandon
 # For running this test need to select Abandon.Name as Illness from IncidentsHelper'java
 
 
-
   @T-imgRetirement3setIllnessinset2-algoBSO
   Scenario: Tennis IMG E2E 3 set match test with Retirement-Illness ( Semi Automated )
     Given a tennis event set as authorized, displayed and in-play
