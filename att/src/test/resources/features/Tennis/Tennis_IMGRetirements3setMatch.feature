@@ -71,6 +71,7 @@ Feature: Tennis Abandon
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Injury from IncidentsHelper'java
+  
 
   @T-imgRetirement3setInjuryinset3-algoBSO
   Scenario: Tennis IMG E2E 3 set match test with Retirement-injury ( Semi Automated )
@@ -152,6 +153,37 @@ Feature: Tennis Abandon
     When user sets the tier level in trader client
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
+
+  @T-imgRetirement3setOtherinset2-algoBSO
+  Scenario: Tennis IMG E2E 3 set match test with Retirement-Injury ( Semi Automated )
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | IMG         |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+# For running this test need to select Abandon.Name as Other from IncidentsHelper'java
+
+  @T-imgRetirement3setOtherinset3-algoBSO
+  Scenario: Tennis IMG E2E 3 set match test with Retirement-Other ( Semi Automated )
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | IMG         |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+# For running this test need to select Abandon.Name as Other from IncidentsHelper'java
+
+
+  @T-imgRetirement3setBallAbuseinset1-algoBSO
+  Scenario: Tennis IMG E2E 3 set match test with Retirement-BallAbuse( Semi Automated )
+    Given a tennis event set as authorized, displayed and in-play
+      | Incidents | IMG         |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+# For running this test need to select Abandon.Name as Ballabuse from IncidentsHelper'java
 
   @T-imgRetirement3setOtherinset2-algoBSO
   Scenario: Tennis IMG E2E 3 set match test with Retirement-Injury ( Semi Automated )
