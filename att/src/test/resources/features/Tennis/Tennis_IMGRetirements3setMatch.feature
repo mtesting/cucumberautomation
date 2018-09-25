@@ -9,7 +9,6 @@ Feature: Tennis Abandon
     When user sets the tier level in trader client
     And the event runs the tennis for Abandon on "<abandon_period>"
 
-
     Examples:
       | abandon_period |
       | pre-match      |
