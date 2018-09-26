@@ -23,7 +23,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Illness from IncidentsHelper'java
 
 
@@ -33,8 +33,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 #When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Illness from IncidentsHelper'java
 
@@ -45,9 +45,9 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Illness from IncidentsHelper'java
 
 
@@ -57,7 +57,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Injury from IncidentsHelper'java
 
 
@@ -67,8 +67,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Injury from IncidentsHelper'java
   
 
@@ -78,9 +78,9 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Injury from IncidentsHelper'java
 
   @T-imgRetirement3setUnspecifiedinset1-algoBSO
@@ -89,7 +89,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Unspecified from IncidentsHelper'java
 
   @T-imgRetirement3setUnspecifiedinset2-algoBSO
@@ -98,8 +98,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Unspecified from IncidentsHelper'java
 
   @T-imgRetirement3setUnspecifiedinset3-algoBSO
@@ -108,9 +108,9 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Unspecified from IncidentsHelper'java
 
   @T-imgRetirement3setUnknowninset1-algoBSO
@@ -119,7 +119,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Unknown from IncidentsHelper'java
 
   @T-imgRetirement3setUnknowninset2-algoBSO
@@ -128,8 +128,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Unknown from IncidentsHelper'java
 
   @T-imgRetirement3setUnknowninset3-algoBSO
@@ -138,9 +138,9 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Unknown from IncidentsHelper'java
 
 
@@ -150,7 +150,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
 
   @T-imgRetirement3setOtherinset2-algoBSO
@@ -159,8 +159,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
 
 
@@ -170,9 +170,9 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
 
 
@@ -182,7 +182,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Ballabuse from IncidentsHelper'java
 
   @T-imgRetirement3setOtherinset2-algoBSO
@@ -191,8 +191,8 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
 
   @T-imgRetirement3setOtherinset3-algoBSO
@@ -201,7 +201,7 @@ Feature: Tennis Abandon
       | Incidents | IMG         |
       | StartTime | currenttime |
     When user sets the tier level in trader client
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set1"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set2"
-    When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset3.xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/Tennis3setmatch2-1-retirementinset3.xlsx" sheet "set3"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
