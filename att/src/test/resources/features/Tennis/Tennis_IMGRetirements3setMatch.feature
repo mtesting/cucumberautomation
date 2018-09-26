@@ -60,6 +60,7 @@ Feature: Tennis Abandon
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset1.xlsx" sheet "set1"
 # For running this test need to select Abandon.Name as Injury from IncidentsHelper'java
 
+
   @T-imgRetirement3setInjuryinset2-algoBSO
   Scenario: Tennis IMG E2E 3 set match test with Retirement-Injury ( Semi Automated )
     Given a tennis event set as authorized, displayed and in-play
@@ -161,6 +162,7 @@ Feature: Tennis Abandon
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set1"
     When the event runs the tennis incidents from "Tennis/Tennis3set2-1-retirementinset2.xlsx" sheet "set2"
 # For running this test need to select Abandon.Name as Other from IncidentsHelper'java
+
 
   @T-imgRetirement3setOtherinset3-algoBSO
   Scenario: Tennis IMG E2E 3 set match test with Retirement-Other ( Semi Automated )
