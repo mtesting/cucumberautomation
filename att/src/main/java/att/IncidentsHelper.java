@@ -181,20 +181,11 @@ public class IncidentsHelper {
 
                 try {
                     incident.setType(IncidentType.fromValue(row.getCell(TYPE).getStringCellValue()));
-                   //incident.setType(IncidentType.fromValue(row.getCell(ABANDON_NAME).getStringCellValue()));
                     switch (incident.getType()) {
                         case ABANDON_MATCH:
-                           // incident.setName(AbandonName.WALKOVER);
-                            incident.setName(AbandonName.ILLNESS);
-                            //incident.setName(AbandonName.INJURY);
-                            //incident.setName(AbandonName.OTHER);
-                            //incident.setName(AbandonName.UNSPECIFIED);
-                            //incident.setName(AbandonName.UNKNOWN);
-                            //incident.setName(AbandonName.RETIREMENT);
-
+                            incident.setName(AbandonName.WALKOVER);
                             break;
                         case TENNIS_MATCH_STATE_CHANGED:
-                            break;
                         case PREGAME:
                             incident.setMatchState(TennisMatchState.IN_PROGRESS);
                             break;
