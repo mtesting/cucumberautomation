@@ -1,5 +1,6 @@
 package steps.att;
 
+import cucumber.api.PendingException;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class Tennis extends EventSteps {
         eventHelper.createEvent(decoder.getCompetitionId("tennis"), incidentsProvider,
                 1,1, "", "currenttime", null);
         eventHelper.assertEventIsCreated();
+        Utils.waitSeconds(40);
         eventHelper.waitForEventToActiveDisplayed();
         eventHelper.scheduleInplay();
     }
@@ -84,7 +86,7 @@ public class Tennis extends EventSteps {
     }
 
     @And("^the event runs the tennis for Heat Delay$")
-    public void theEventRunsTheTennisForHeatDelay() throws Throwable {;
+    public void theEventRunsTheTennisForHeatDelay() throws Throwable {
         WeatherDelayScenarios weatherDelayScenarios = new WeatherDelayScenariosImp();
         eventHelper.sendIncidents(weatherDelayScenarios.getHeatStopPlayIncidents());
     }
@@ -125,4 +127,26 @@ public class Tennis extends EventSteps {
         eventHelper.sendIncidents(weatherDelayScenarios.getToiletBreakStopAndStartPlayIncidents());
     }
 
+
+    @Given("^a tennis event set as authorized, displayed and in-play for BR Set$")
+    public void aTennisEventSetAsAuthorizedDisplayedAndInPlayForBRSet(Map<String, String> data) throws Throwable {
+        incidentsProvider = data.get("Incidents");
+        eventHelper.createEvent(decoder.getCompetitionId("tennis fivesetbr"), incidentsProvider,
+                1,1, "", "currenttime", null);
+        eventHelper.assertEventIsCreated();
+        Utils.waitSeconds(40);
+        eventHelper.waitForEventToActiveDisplayed();
+        eventHelper.scheduleInplay();
+    }
+
+    @Given("^a tennis event set as authorized, displayed and in-play for IMG$")
+    public void aTennisEventSetAsAuthorizedDisplayedAndInPlayForIMG(Map<String, String> data) throws Throwable {
+        incidentsProvider = data.get("Incidents");
+        eventHelper.createEvent(decoder.getCompetitionId("tennis fivesetimg"), incidentsProvider,
+                1,1, "", "currenttime", null);
+        eventHelper.assertEventIsCreated();
+        Utils.waitSeconds(40);
+        eventHelper.waitForEventToActiveDisplayed();
+        eventHelper.scheduleInplay();
+    }
 }

@@ -18,6 +18,14 @@ public class BetfairDecoder implements Decoder {
             case "TENNIS DOUBLES":
                 competitionId = 4328343L;
                 break;
+            case "TENNIS FIVESETIMG":
+                competitionId = 4619375L;
+                break;
+
+            //case "TENNIS FIVESETBR":   /* Added for Betradar 5 set in case it is added in the project later */
+             //   competitionId = 4491414L;
+             //   break;
+
             default:
                 throw new DecoderConfigException("Sport name missing at the getCompetitionId() config");
         }

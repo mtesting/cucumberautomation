@@ -35,7 +35,7 @@ import util.XssReader;
 public class IncidentsHelper {
 
     private static final Logger log = Logger.getLogger(IncidentsHelper.class);
-    private final int DEFAULT_INCIDENT_DELAY = 10;
+    private final int DEFAULT_INCIDENT_DELAY = 40;
 
     /**
      * Loads the incidents from a CSV file
