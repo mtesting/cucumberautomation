@@ -65,3 +65,15 @@ Feature: Tennis events E2E 5 Set
     When the event runs the tennis incidents from "Tennis/TennisImgE2E_new_5set.xlsx" sheet "set2"
     When the event runs the tennis incidents from "Tennis/TennisImgE2E_new_5set.xlsx" sheet "set3"
 
+  @T-imgE2E5set3-1-algoBSO
+  Scenario: Tennis IMG E2E with resulting for 5 set 3-1 scenario( Semi Automated )
+    Given a tennis event set as authorized, displayed and in-play for IMG
+      | Incidents | IMG         |
+      | StartTime | currenttime |
+    When user sets the tier level in trader client
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5sets(3-1).xlsx" sheet "set1"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5sets(3-1).xlsx" sheet "set2"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5sets(3-1).xlsx" sheet "set3"
+    When the event runs the tennis incidents from "Tennis/TennisImgE2E-5sets(3-1).xlsx" sheet "set4"
+    
+
